@@ -88,7 +88,7 @@
                                              options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading
                                              context:nil].size;
     
-    return CGRectIntegral(CGRectMake(0, 0, sizeToFit.width + 10, sizeToFit.height + 16)).size;
+    return CGRectIntegral(CGRectMake(0, 0, sizeToFit.width + 10, sizeToFit.height)).size;
 }
 
 + (CGSize)sizeForTextWithText:(NSString *)text
@@ -97,7 +97,6 @@
     CGSize size = CGSizeZero;
     size = [text boundingRectWithSize:CGSizeMake(maximumTextWidth, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:font} context:nil].size;
     size.width += 10;
-    size.height += 16;
     
     return size;
 }

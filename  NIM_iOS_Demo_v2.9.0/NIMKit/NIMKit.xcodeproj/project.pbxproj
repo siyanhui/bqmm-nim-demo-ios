@@ -115,6 +115,7 @@
 		61F4E56A1CE1DBC0000AD2A9 /* NIMKitSwitcherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F4E5681CE1DBC0000AD2A9 /* NIMKitSwitcherCell.m */; };
 		AC32452993DDF668961CCC19 /* libevent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C948FBA5CC7BE9F68EB19E /* libevent.a */; };
 		BE054D69ADA9F16FA3DCE745 /* libNIMAVChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CEE41518F6F49B583F98CF5 /* libNIMAVChat.a */; };
+		CC5469601DABA626003E6BF3 /* NIMSessionEmojiContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC54695F1DABA626003E6BF3 /* NIMSessionEmojiContentView.m */; };
 		CCE891BE1DAB74E200848D09 /* BQMM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCE891B61DAB74E200848D09 /* BQMM.framework */; };
 		D2544A30B225237C395FD5EA /* libnvs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 717747808AC191A92B35D412 /* libnvs.a */; };
 		D7C143D2A52F6F4A980B81EB /* libnio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 309041D68D8BA0EA545ED11A /* libnio.a */; };
@@ -368,6 +369,8 @@
 		C1C04577BDA47CB6277D6359 /* NIMGlobalDefs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NIMGlobalDefs.h; path = ./NIMKit/Vendors/NIMSDK/ExportHeaders/NIMGlobalDefs.h; sourceTree = SOURCE_ROOT; };
 		C909431B9EAB4761E94C4B47 /* NIMMessageObjectProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NIMMessageObjectProtocol.h; path = ./NIMKit/Vendors/NIMSDK/ExportHeaders/Protocol/NIMMessageObjectProtocol.h; sourceTree = SOURCE_ROOT; };
 		CBEC4566B75FE60BEAD07379 /* NIMNetCallDefs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NIMNetCallDefs.h; path = ./NIMKit/Vendors/NIMAVChat/ExportHeaders/NIMNetCallDefs.h; sourceTree = SOURCE_ROOT; };
+		CC54695E1DABA626003E6BF3 /* NIMSessionEmojiContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIMSessionEmojiContentView.h; sourceTree = "<group>"; };
+		CC54695F1DABA626003E6BF3 /* NIMSessionEmojiContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIMSessionEmojiContentView.m; sourceTree = "<group>"; };
 		CCE891B51DAB74E200848D09 /* BQMM.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BQMM.bundle; sourceTree = "<group>"; };
 		CCE891B61DAB74E200848D09 /* BQMM.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BQMM.framework; sourceTree = "<group>"; };
 		CCE891B81DAB74E200848D09 /* MMTextAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTextAttachment.h; sourceTree = "<group>"; };
@@ -974,6 +977,8 @@
 				61FAB97A1B7836B400355B95 /* NIMSessionUnknowContentView.m */,
 				61FAB97B1B7836B400355B95 /* NIMSessionVideoContentView.h */,
 				61FAB97C1B7836B400355B95 /* NIMSessionVideoContentView.m */,
+				CC54695E1DABA626003E6BF3 /* NIMSessionEmojiContentView.h */,
+				CC54695F1DABA626003E6BF3 /* NIMSessionEmojiContentView.m */,
 			);
 			path = SessionContentView;
 			sourceTree = "<group>";
@@ -1334,6 +1339,7 @@
 				61D99FDB1BAFF6190059D369 /* NIMTeamCardRowItem.m in Sources */,
 				6187F9F71B81915700EFFB3A /* NIMSessionMessageContentView.m in Sources */,
 				6187F9F81B81915700EFFB3A /* NIMSessionTimestampCell.m in Sources */,
+				CC5469601DABA626003E6BF3 /* NIMSessionEmojiContentView.m in Sources */,
 				6187F9F91B81915700EFFB3A /* NIMMessageCell.m in Sources */,
 				6187F9FA1B81915700EFFB3A /* NIMSessionAudioContentView.m in Sources */,
 				E4EA43471BA7E5E5003FC1BA /* NIMBaseSessionContentConfig.m in Sources */,

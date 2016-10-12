@@ -198,6 +198,7 @@
 		BDA64F1A1CA38A3800BCF04D /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDA64F191CA38A3800BCF04D /* VideoToolbox.framework */; };
 		BDB0FC691BA7E6D30066654D /* NTESGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = BDB0FC681BA7E6D30066654D /* NTESGLView.m */; };
 		C4E43434FD003E69D8A1CE98 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16AF9898D58E36D61F8B0727 /* libPods.a */; };
+		CC5469631DACC075003E6BF3 /* NTESChatroomEmojiContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5469621DACC075003E6BF3 /* NTESChatroomEmojiContentView.m */; };
 		CCE891941DAB67B400848D09 /* BQMM.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CCE8918B1DAB67B400848D09 /* BQMM.bundle */; };
 		CCE891951DAB67B400848D09 /* BQMM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCE8918C1DAB67B400848D09 /* BQMM.framework */; };
 		CCE891961DAB67B400848D09 /* MMTextAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE8918F1DAB67B400848D09 /* MMTextAttachment.m */; };
@@ -562,6 +563,8 @@
 		BDA64F191CA38A3800BCF04D /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		BDB0FC671BA7E6D30066654D /* NTESGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESGLView.h; sourceTree = "<group>"; };
 		BDB0FC681BA7E6D30066654D /* NTESGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESGLView.m; sourceTree = "<group>"; };
+		CC5469611DACC075003E6BF3 /* NTESChatroomEmojiContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESChatroomEmojiContentView.h; sourceTree = "<group>"; };
+		CC5469621DACC075003E6BF3 /* NTESChatroomEmojiContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESChatroomEmojiContentView.m; sourceTree = "<group>"; };
 		CCE8918B1DAB67B400848D09 /* BQMM.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BQMM.bundle; sourceTree = "<group>"; };
 		CCE8918C1DAB67B400848D09 /* BQMM.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BQMM.framework; sourceTree = "<group>"; };
 		CCE8918E1DAB67B400848D09 /* MMTextAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTextAttachment.h; sourceTree = "<group>"; };
@@ -769,6 +772,8 @@
 			children = (
 				6159DF581C45FAF500E32EB4 /* NTESChatroomTextContentView.h */,
 				6159DF591C45FAF500E32EB4 /* NTESChatroomTextContentView.m */,
+				CC5469611DACC075003E6BF3 /* NTESChatroomEmojiContentView.h */,
+				CC5469621DACC075003E6BF3 /* NTESChatroomEmojiContentView.m */,
 			);
 			path = SessionContentView;
 			sourceTree = "<group>";
@@ -1807,6 +1812,7 @@
 				61E4718D1B7D96AA00F4A1BF /* NTESDemoConfig.m in Sources */,
 				61E471541B7D963E00F4A1BF /* NTESNetChatViewController.m in Sources */,
 				61E471331B7D963E00F4A1BF /* NTESSearchLocalHistoryObject.m in Sources */,
+				CC5469631DACC075003E6BF3 /* NTESChatroomEmojiContentView.m in Sources */,
 				6173AED81BAAC8F500854D49 /* NTESSignSettingViewController.m in Sources */,
 				61E471201B7D963E00F4A1BF /* NTESCustomNotificationObject.m in Sources */,
 				6173AEC41BAAB94400854D49 /* NTESUserInfoSettingViewController.m in Sources */,

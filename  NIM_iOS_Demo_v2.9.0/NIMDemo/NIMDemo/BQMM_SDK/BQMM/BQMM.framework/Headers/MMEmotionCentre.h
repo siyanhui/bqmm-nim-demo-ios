@@ -201,10 +201,7 @@ typedef enum
                     codes:(nonnull NSArray *)emojiCodes
         completionHandler:(void (^ __nullable )(NSArray * __nullable emojis))completionHandler;
 
-/**
- *  Display shop view controller
- */
-- (void)presentShopViewController;
+
 /**
  *  clear session
  */
