@@ -9,10 +9,15 @@
 
 #import "NIMSessionMessageContentView.h"
 
+//BQMM集成
+#import "MMTextView.h"
+
 @class NIMAttributedLabel;
 
 @interface NTESChatroomTextContentView : NIMSessionMessageContentView
 
-@property (nonatomic, strong) NIMAttributedLabel *textLabel;
+//BQMM集成
+//@property (nonatomic, strong) NIMAttributedLabel *textLabel;
+@property (nonatomic, strong) MMTextView *textMessageView;
 
 @end

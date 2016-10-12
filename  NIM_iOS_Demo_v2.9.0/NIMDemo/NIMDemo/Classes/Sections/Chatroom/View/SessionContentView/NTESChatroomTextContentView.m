@@ -20,23 +20,32 @@
 - (instancetype)initSessionMessageContentView
 {
     if (self = [super initSessionMessageContentView]) {
-        _textLabel = [[NIMAttributedLabel alloc] initWithFrame:CGRectZero];
-        _textLabel.autoDetectLinks = NO;
-        _textLabel.delegate = self;
-        _textLabel.numberOfLines = 0;
-        _textLabel.lineBreakMode = NSLineBreakByWordWrapping;
-        _textLabel.font = [UIFont systemFontOfSize:Chatroom_Message_Font_Size];
-        _textLabel.backgroundColor = [UIColor clearColor];
-        _textLabel.textColor = [UIColor blackColor];
-        [self addSubview:_textLabel];
+        //BQMM集成
+        _textMessageView = [[MMTextView alloc] init];
+        _textMessageView.backgroundColor = [UIColor clearColor];
+        _textMessageView.textContainerInset = UIEdgeInsetsZero;
+        _textMessageView.mmTextColor = [UIColor blackColor];
+        _textMessageView.mmFont = [UIFont systemFontOfSize:Chatroom_Message_Font_Size];
+        _textMessageView.editable = false;
+        _textMessageView.selectable = false;
+        _textMessageView.scrollEnabled = false;
+        _textMessageView.clickActionDelegate = self;
+        [self addSubview:_textMessageView];
+        
+        
     }
     return self;
 }
 
 - (void)refresh:(NIMMessageModel *)model{
     [super refresh:model];
-    NSString *text = self.model.message.text;
-    [_textLabel nim_setText:text];
+    //BQMM集成
+    NSDictionary *extDic = model.message.remoteExt;
+    if(extDic[@"msg_data"] != nil) {
+        [_textMessageView setMmTextData:extDic[@"msg_data"]];
+    }else{
+        _textMessageView.text = model.message.text;
+    }
 }
 
 - (void)layoutSubviews{
@@ -44,7 +53,8 @@
     UIEdgeInsets contentInsets = self.model.contentViewInsets;
     CGSize contentsize         = self.model.contentSize;
     CGRect labelFrame = CGRectMake(contentInsets.left, contentInsets.top, contentsize.width, contentsize.height);
-    self.textLabel.frame = labelFrame;
+    //BQMM集成
+    _textMessageView.frame = labelFrame;
 }
 
 

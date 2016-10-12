@@ -62,7 +62,15 @@
 - (void)sendMessage:(NIMMessage *)message
 {
     NIMChatroomMember *member = [[NTESChatroomManager sharedInstance] myInfo:self.chatroom.roomId];
-    message.remoteExt = @{@"type":@(member.type)};
+    //BQMM集成
+    if (message.remoteExt) {
+        NSMutableDictionary *ret = [[NSMutableDictionary alloc] initWithDictionary:message.remoteExt];
+        ret[@"type"] = @(member.type);
+        message.remoteExt = ret;
+    }else{
+        message.remoteExt = @{@"type": @(member.type)};
+    }
+    
     [super sendMessage:message];
 }
 

@@ -10,10 +10,10 @@
 #import "NIMInputTextView.h"
 #import "NIMInputProtocol.h"
 #import "NIMSessionConfig.h"
-
+//BQMM集成
+#import "NIMInputToolBar.h"
 @class NIMInputMoreContainerView;
 @class NIMInputEmoticonContainerView;
-@class NIMInputToolBar;
 
 typedef NS_ENUM(NSInteger, NIMInputType){
     InputTypeText = 1,
@@ -50,7 +50,9 @@ typedef NS_ENUM(NSInteger, NIMAudioRecordPhase) {
 
 @property (strong, nonatomic)  NIMInputToolBar *toolBar;
 @property (strong, nonatomic)  NIMInputMoreContainerView *moreContainer;
-@property (strong, nonatomic)  NIMInputEmoticonContainerView *emoticonContainer;
+//BQMM集成
+//@property (strong, nonatomic)  NIMInputEmoticonContainerView *emoticonContainer;
+@property (nonatomic) NIMInputType inputType;
 
 - (instancetype)initWithFrame:(CGRect)frame;
 
@@ -63,5 +65,10 @@ typedef NS_ENUM(NSInteger, NIMAudioRecordPhase) {
 - (void)setInputTextPlaceHolder:(NSString*)placeHolder;
 - (void)updateAudioRecordTime:(NSTimeInterval)time;
 - (void)updateVoicePower:(float)power;
+
+
+//BQMM集成
+- (void)inputTextViewToHeight:(CGFloat)toHeight;
+- (CGFloat)getTextViewContentH:(UITextView *)textView;
 
 @end

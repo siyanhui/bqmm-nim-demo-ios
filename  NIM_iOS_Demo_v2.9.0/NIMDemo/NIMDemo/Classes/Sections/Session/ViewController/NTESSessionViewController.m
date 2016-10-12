@@ -49,6 +49,8 @@
 #import "NTESDataManager.h"
 #import "NTESSessionUtil.h"
 
+//BQMM集成
+#import <BQMM/BQMM.h>
 typedef enum : NSUInteger {
     NTESImagePickerModeImage,
     NTESImagePickerModeSnapChat,
@@ -481,19 +483,31 @@ NIMContactSelectDelegate>
         NSDictionary *actions = [self cellActions];
         NSString *value = actions[@(message.messageType)];
         if (value) {
-            SEL selector = NSSelectorFromString(value);
-            if (selector && [self respondsToSelector:selector]) {
-                SuppressPerformSelectorLeakWarning([self performSelector:selector withObject:message]);
-                handled = YES;
+            //BQMM集成
+            if ([value isEqualToString:@"textContentAction"]) {
+                NSDictionary *extDic = message.remoteExt;
+                if (extDic != nil && [extDic[@"txt_msgType"] isEqualToString: @"facetype"]) {
+                    SEL selector = NSSelectorFromString(@"showEmojiDetail:");
+                    if (selector && [self respondsToSelector:selector]) {
+                        SuppressPerformSelectorLeakWarning([self performSelector:selector withObject:message]);
+                        handled = YES;
+                    }
+                }
+            }else{
+                SEL selector = NSSelectorFromString(value);
+                if (selector && [self respondsToSelector:selector]) {
+                    SuppressPerformSelectorLeakWarning([self performSelector:selector withObject:message]);
+                    handled = YES;
+                }
             }
         }
     }
     else if([eventName isEqualToString:NIMKitEventNameTapLabelLink])
     {
+        //BQMM集成
         NSString *link = event.data;
-        [self.view makeToast:[NSString stringWithFormat:@"tap link : %@",link]
-                    duration:2
-                    position:CSToastPositionCenter];
+        NSURL *linkUrl = [[NSURL alloc] initWithString:link];
+        [[UIApplication sharedApplication] openURL:linkUrl];
         handled = YES;
     }
     else if([eventName isEqualToString:NIMDemoEventNameOpenSnapPicture])
@@ -552,6 +566,15 @@ NIMContactSelectDelegate>
 
 
 #pragma mark - Cell Actions
+//BQMM集成
+- (void)showEmojiDetail:(NIMMessage *)message {
+    NSDictionary *extDic = message.remoteExt;
+    if (extDic != nil && [extDic[@"txt_msgType"] isEqualToString: @"facetype"]) {
+        UIViewController *emojiController = [[MMEmotionCentre defaultCentre] controllerForEmotionCode:extDic[@"msg_data"][0][0]];
+        [self.navigationController pushViewController:emojiController animated:YES];
+    }
+}
+
 - (void)showImage:(NIMMessage *)message
 {
     NIMImageObject *object = message.messageObject;
@@ -829,7 +852,9 @@ NIMContactSelectDelegate>
     static NSDictionary *actions = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        actions = @{@(NIMMessageTypeImage) :    @"showImage:",
+        //BQMM集成
+        actions = @{@(NIMMessageTypeText) :     @"textContentAction",
+                    @(NIMMessageTypeImage) :    @"showImage:",
                     @(NIMMessageTypeAudio) :    @"playAudio:",
                     @(NIMMessageTypeVideo) :    @"showVideo:",
                     @(NIMMessageTypeLocation) : @"showLocation:",

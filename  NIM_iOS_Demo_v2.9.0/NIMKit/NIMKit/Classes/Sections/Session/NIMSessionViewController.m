@@ -23,7 +23,8 @@
 #import "NIMMessageCellMaker.h"
 #import "NIMUIConfig.h"
 #import "NIMKit.h"
-
+//BQMM集成
+#import "MMTextParser.h"
 
 static const void * const NTESDispatchMessageDataPrepareSpecificKey = &NTESDispatchMessageDataPrepareSpecificKey;
 dispatch_queue_t NTESMessageDataPrepareQueue()
@@ -42,7 +43,8 @@ dispatch_queue_t NTESMessageDataPrepareQueue()
 NIMConversationManagerDelegate,
 NIMMediaManagerDelgate,
 NIMMessageCellDelegate,
-NIMUserManagerDelegate>
+NIMUserManagerDelegate,
+MMEmotionCentreDelegate>//BQMM集成
 
 @property (nonatomic,strong,readwrite) UITableView *tableView;
 
@@ -68,6 +70,9 @@ NIMUserManagerDelegate>
     [super viewDidLoad];
     [self makeUI];
     [self makeHandlerAndDataSource];
+    
+    //BQMM集成
+    [[MMEmotionCentre defaultCentre] shouldShowShotcutPopoverAboveView:_sessionInputView.toolBar.emoticonBtn withInput:_sessionInputView.toolBar.inputTextView];
 }
 
 
@@ -85,6 +90,8 @@ NIMUserManagerDelegate>
 {
     self.navigationItem.title = [self sessionTitle];
     NIMCustomLeftBarView *leftBarView = [[NIMCustomLeftBarView alloc] init];
+    //BQMM集成
+    leftBarView.tag = 1000;
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:leftBarView];
     self.navigationItem.leftBarButtonItem = leftItem;
     self.navigationItem.leftItemsSupplementBackButton = YES;
@@ -173,6 +180,15 @@ NIMUserManagerDelegate>
     //fix bug: 竖屏进入会话界面，然后右上角进入群信息，再横屏，左上角返回，横屏的会话界面显示的就是竖屏时的大小
     [self.sessionDatasource cleanCache];
     [self.tableView reloadData];
+    
+    //BQMM集成
+    [MMEmotionCentre defaultCentre].delegate = self;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    //BQMM集成
+    [MMEmotionCentre defaultCentre].delegate = nil;
+    [super viewWillDisappear:animated];
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
@@ -503,7 +519,31 @@ NIMUserManagerDelegate>
 
 - (void)onSendText:(NSString *)text
 {
-    NIMMessage *message = [NIMMessageMaker msgWithText:text];
+    //BQMM集成
+    NSMutableCharacterSet *set = [NSMutableCharacterSet whitespaceCharacterSet];
+    NSString *sendStr = _sessionInputView.toolBar.inputTextView.characterMMText;
+    NSArray *textImgArray = _sessionInputView.toolBar.inputTextView.textImgArray;
+    NSDictionary *mmExt = @{@"txt_msgType":@"emojitype",
+                            @"msg_data":[MMTextParser extDataWithTextImageArray:textImgArray]};;
+    if (sendStr.length == 0) {
+        UIAlertView * alert = [[UIAlertView alloc]initWithTitle:nil message:@"不能发送空白消息" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
+    
+    NSString *extString = nil;
+    if (mmExt) {
+        NSError *parseError = nil;
+        NSData  *extData = [NSJSONSerialization dataWithJSONObject:mmExt
+                                                           options:NSJSONWritingPrettyPrinted error:&parseError];
+        extString = [[NSString alloc] initWithData:extData encoding:NSUTF8StringEncoding];
+        extString = [extString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    }
+    
+    NIMMessage *message = [NIMMessageMaker msgWithText:sendStr];
+    message.remoteExt = mmExt;
+
     [self sendMessage:message];
 }
 
@@ -581,8 +621,12 @@ NIMUserManagerDelegate>
     NSMutableArray *items = [NSMutableArray array];
     
     if (message.messageType == NIMMessageTypeText) {
-        [items addObject:[[UIMenuItem alloc] initWithTitle:@"复制"
-                                                    action:@selector(copyText:)]];
+        //BQMM集成
+        NSDictionary *ext = message.remoteExt;
+        if (![ext[@"txt_msgType"] isEqualToString:@"facetype"]) {
+            [items addObject:[[UIMenuItem alloc] initWithTitle:@"复制"
+                                                        action:@selector(copyText:)]];
+        }
     }
     [items addObject:[[UIMenuItem alloc] initWithTitle:@"删除"
                                                 action:@selector(deleteMsg:)]];
@@ -615,10 +659,17 @@ NIMUserManagerDelegate>
 
 - (void)copyText:(id)sender
 {
+    //BQMM集成
     NIMMessage *message = [self messageForMenu];
     if (message.text.length) {
         UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-        [pasteboard setString:message.text];
+        
+        NSDictionary *extDic = message.remoteExt;
+        if (extDic != nil && [extDic[@"txt_msgType"] isEqualToString:@"emojitype"]) {
+            pasteboard.string = [MMTextParser stringWithExtData:extDic[@"msg_data"]];
+        }else{
+            [pasteboard setString:message.text];
+        }
     }
 }
 
@@ -933,6 +984,53 @@ NIMUserManagerDelegate>
                                         model:models[index]];
         }
     }
+}
+
+//BQMM集成
+//#pragma mark - MMEmotionCentreDelegate
+- (void)didSelectEmoji:(MMEmoji *)emoji
+{
+    [self sendMMFace:emoji];
+}
+
+- (void)didSelectTipEmoji:(MMEmoji *)emoji
+{
+    [self sendMMFace:emoji];
+    _sessionInputView.toolBar.inputTextView.text = @"";
+}
+
+- (void)didSendWithInput:(UIResponder<UITextInput> *)input
+{
+    UITextView *textView = (UITextView *)input;
+    [self onSendText:textView.text];
+    [textView layoutIfNeeded];
+    textView.text = @"";
+    [textView layoutIfNeeded];
+    [_sessionInputView inputTextViewToHeight:[_sessionInputView getTextViewContentH:textView]];
+}
+
+- (void)tapOverlay
+{
+    _sessionInputView.inputType = InputTypeText;
+}
+
+#pragma mark private
+-(void)sendMMFace:(MMEmoji *)emoji {
+    NSDictionary *mmExt = @{@"txt_msgType":@"facetype",
+                            @"msg_data":@[@[emoji.emojiCode, [NSString stringWithFormat:@"%d", emoji.isEmoji ? 1 : 2]]]};
+    NSString *extString = nil;
+    if (mmExt) {
+        NSError *parseError = nil;
+        NSData  *extData = [NSJSONSerialization dataWithJSONObject:mmExt
+                                                           options:NSJSONWritingPrettyPrinted error:&parseError];
+        extString = [[NSString alloc] initWithData:extData encoding:NSUTF8StringEncoding];
+        extString = [extString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    }
+    NSString *sendStr = [NSString stringWithFormat:@"[%@]", emoji.emojiName];
+    NIMMessage *message = [NIMMessageMaker msgWithText:sendStr];
+    message.remoteExt = mmExt;
+    
+    [self sendMessage:message];
 }
 
 @end

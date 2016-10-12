@@ -7,10 +7,13 @@
 //
 
 #import "NIMSessionMessageContentView.h"
+//BQMM集成
+#import "MMTextView.h"
 @class NIMAttributedLabel;
 
-@interface NIMSessionTextContentView : NIMSessionMessageContentView
+@interface NIMSessionTextContentView : NIMSessionMessageContentView<MMTextViewDelegate>
 
 @property (nonatomic, strong) NIMAttributedLabel *textLabel;
+@property (nonatomic, strong) MMTextView *textMessageView;
 
 @end

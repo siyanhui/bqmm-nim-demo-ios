@@ -19,11 +19,12 @@
 #import "NIMUIConfig.h"
 #import "NIMGlobalMacro.h"
 
-
+//BQMM集成
+#import <BQMM/BQMM.h>
 @interface NIMInputView()<UITextViewDelegate,NIMInputEmoticonProtocol>
 {
+    //BQMM集成
     UIView  *_emoticonView;
-    NIMInputType  _inputType;
     CGFloat   _inputTextViewOlderHeight;
 }
 
@@ -72,7 +73,8 @@
         [_toolBar setInputBarItemTypes:types];
     }
     _moreContainer.config     = config;
-    _emoticonContainer.config = config;
+    //BQMM集成
+//    _emoticonContainer.config = config;
 }
 
 - (void)setInputDelegate:(id<NIMInputDelegate>)delegate
@@ -152,17 +154,19 @@
     _moreContainer.hidden   = YES;
     [self addSubview:_moreContainer];
     
-    _emoticonContainer = [[NIMInputEmoticonContainerView alloc] initWithFrame:CGRectMake(0, [NIMUIConfig topInputViewHeight], self.nim_width, [NIMUIConfig bottomInputViewHeight])];
-    _emoticonContainer.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    _emoticonContainer.delegate = self;
-    _emoticonContainer.hidden = YES;
-    [self addSubview:_emoticonContainer];
+    //BQMM集成
+//    _emoticonContainer = [[NIMInputEmoticonContainerView alloc] initWithFrame:CGRectMake(0, [NIMUIConfig topInputViewHeight], self.nim_width, [NIMUIConfig bottomInputViewHeight])];
+//    _emoticonContainer.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+//    _emoticonContainer.delegate = self;
+//    _emoticonContainer.hidden = YES;
+//    [self addSubview:_emoticonContainer];
 }
 
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    _emoticonContainer.delegate = nil;
+    //BQMM集成
+//    _emoticonContainer.delegate = nil;
     _toolBar.inputTextView.delegate = nil;
 }
 
@@ -346,7 +350,8 @@
     self.toolBar.frame             = rect;
     [self.toolBar layoutIfNeeded];
     self.moreContainer.nim_top     = self.toolBar.nim_bottom;
-    self.emoticonContainer.nim_top = self.toolBar.nim_bottom;
+    //BQMM集成
+//    self.emoticonContainer.nim_top = self.toolBar.nim_bottom;
 }
 
 
@@ -418,14 +423,14 @@
 - (void)onTouchEmoticonBtn:(id)sender
 {
     if (_inputType != InputTypeEmot) {
+        //BQMM集成
         _inputType = InputTypeEmot;
+        //切换BQMM键盘
+        self.toolBar.inputTextView.selectedRange = NSMakeRange(self.toolBar.inputTextView.text.length,0);
+        [[MMEmotionCentre defaultCentre] attachEmotionKeyboardToInput:self.toolBar.inputTextView];
+        [self.toolBar.inputTextView becomeFirstResponder];
         _inputBottomViewHeight = [NIMUIConfig bottomInputViewHeight];
-        [self bringSubviewToFront:_emoticonContainer];
         [_moreContainer setHidden:YES];
-        [_emoticonContainer setHidden:NO];
-        if ([self.toolBar.inputTextView isFirstResponder]) {
-            [self.toolBar.inputTextView resignFirstResponder];
-        }
         [UIView animateWithDuration:0.25 animations:^{
             [self willShowBottomHeight:_inputBottomViewHeight];
         }];
@@ -434,6 +439,8 @@
         _inputBottomViewHeight = 0;
         _inputType = InputTypeText;
         [self.toolBar.inputTextView becomeFirstResponder];
+        //BQMM集成
+        [[MMEmotionCentre defaultCentre] switchToDefaultKeyboard];
     }
     [self updateAllButtonImages];
 }
@@ -443,7 +450,8 @@
         _inputType = InputTypeMedia;
         [self bringSubviewToFront:_moreContainer];
         [_moreContainer setHidden:NO];
-        [_emoticonContainer setHidden:YES];
+        //BQMM集成
+//        [_emoticonContainer setHidden:YES];
         _inputBottomViewHeight = [NIMUIConfig bottomInputViewHeight];
         if ([self.toolBar.inputTextView isFirstResponder]) {
             [self.toolBar.inputTextView resignFirstResponder];
@@ -478,7 +486,8 @@
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
-    _inputType = InputTypeText;
+    //BQMM集成
+//    _inputType = InputTypeText;
     [textView becomeFirstResponder];
 }
 

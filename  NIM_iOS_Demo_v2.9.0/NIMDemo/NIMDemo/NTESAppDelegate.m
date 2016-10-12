@@ -23,6 +23,9 @@
 #import "NIMKit.h"
 #import "NTESDataManager.h"
 #import "NTESSDKConfig.h"
+#import "NIMUIConfig.h"
+//BQMM集成
+#import <BQMM/BQMM.h>
 
 NSString *NTESNotificationLogout = @"NTESNotificationLogout";
 @interface NTESAppDelegate ()<NIMLoginManagerDelegate>
@@ -40,7 +43,18 @@ NSString *NTESNotificationLogout = @"NTESNotificationLogout";
     _config = [[NTESSDKConfig alloc] init];
     [[NIMSDKConfig sharedConfig] setDelegate:_config];
     
+    //BQMM集成  BQMM初始化
+    NSString *appId = @"appId";
+    NSString *secret = @"appSecret";
+    [[MMEmotionCentre defaultCentre] setAppId:appId
+                                       secret:secret];
     
+    MMTheme *theme = [[MMTheme alloc] init];
+    theme.keyboardHeight = [NIMUIConfig bottomInputViewHeight];
+    [[MMEmotionCentre defaultCentre] setTheme:theme];
+    [MMEmotionCentre defaultCentre].sdkMode = MMSDKModeIM;
+    [MMEmotionCentre defaultCentre].sdkLanguage = MMLanguageChinese;
+    [MMEmotionCentre defaultCentre].sdkRegion = MMRegionOther;
     
     //appkey是应用的标识，不同应用之间的数据（用户、消息、群组等）是完全隔离的。
     //如需打网易云信Demo包，请勿修改appkey，开发自己的应用时，请替换为自己的appkey.
@@ -89,6 +103,8 @@ NSString *NTESNotificationLogout = @"NTESNotificationLogout";
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
+    //BQMM集成
+    [[MMEmotionCentre defaultCentre] clearSession];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
