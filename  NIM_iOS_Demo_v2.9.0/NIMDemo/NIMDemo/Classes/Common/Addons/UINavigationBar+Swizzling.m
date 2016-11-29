@@ -29,7 +29,6 @@
     if (subview.tag == 1000) {
         subview.left = NavigationBtnMargin;
     }
-    
     //解决标题过长时，设置navigationItem.title导致标题偏移的问题
     UILabel *label = (UILabel *)navigationItem.titleView;
     UIFont *font   = self.titleTextAttributes[NSFontAttributeName];

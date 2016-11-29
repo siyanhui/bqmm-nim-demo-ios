@@ -51,6 +51,7 @@
 
 //BQMM集成
 #import <BQMM/BQMM.h>
+
 typedef enum : NSUInteger {
     NTESImagePickerModeImage,
     NTESImagePickerModeSnapChat,
@@ -214,6 +215,7 @@ NIMContactSelectDelegate>
 #elif TARGET_OS_IPHONE
         self.imagePicker.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
         [self presentViewController:self.imagePicker animated:YES completion:nil];
+        _mode = NTESImagePickerModeImage;
 #endif
     }
 }
@@ -249,7 +251,6 @@ NIMContactSelectDelegate>
         transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault];
         transition.type = kCATransitionPush;
         transition.subtype = kCATransitionFromTop;
-        transition.delegate = self;
         [self.navigationController.view.layer addAnimation:transition forKey:nil];
         self.navigationController.navigationBarHidden = YES;
         [self.navigationController pushViewController:vc animated:NO];
@@ -267,7 +268,6 @@ NIMContactSelectDelegate>
         transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault];
         transition.type = kCATransitionPush;
         transition.subtype = kCATransitionFromTop;
-        transition.delegate = self;
         [self.navigationController.view.layer addAnimation:transition forKey:nil];
         self.navigationController.navigationBarHidden = YES;
         [self.navigationController pushViewController:vc animated:NO];
@@ -852,7 +852,6 @@ NIMContactSelectDelegate>
     static NSDictionary *actions = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        //BQMM集成
         actions = @{@(NIMMessageTypeText) :     @"textContentAction",
                     @(NIMMessageTypeImage) :    @"showImage:",
                     @(NIMMessageTypeAudio) :    @"playAudio:",

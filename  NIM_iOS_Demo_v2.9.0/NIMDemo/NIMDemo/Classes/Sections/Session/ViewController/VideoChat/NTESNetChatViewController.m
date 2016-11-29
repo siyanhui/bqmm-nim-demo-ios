@@ -260,7 +260,6 @@ NTES_FORBID_INTERACTIVE_POP
     transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault];
     transition.type = kCATransitionPush;
     transition.subtype  = kCATransitionFromBottom;
-    transition.delegate = self;
     [self.navigationController.view.layer addAnimation:transition forKey:nil];
     self.navigationController.navigationBarHidden = NO;
     [self.navigationController popViewControllerAnimated:NO];

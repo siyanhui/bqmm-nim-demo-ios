@@ -102,6 +102,9 @@
     }
     NSInteger count = self.modelArray.count;
     for (NIMMessageModel *model in models) {
+        if ([self modelIsExist:model]) {
+            continue;
+        }
         [self insertMessageModel:model index:self.modelArray.count];
     }
     NSMutableArray *append = [[NSMutableArray alloc] init];
@@ -124,7 +127,13 @@
         return @[];
     }
     NSMutableArray *insert = [[NSMutableArray alloc] init];
-    for (NIMMessageModel *model in models) {
+    //由于找到插入位置后会直接插入，所以这里按时间戳大小先排个序，避免造成先插了时间大的，再插了时间小的，导致之前时间大的消息的位置还需要后移的情况.
+    NSArray *sortModels = [models sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        NIMMessageModel *first  = obj1;
+        NIMMessageModel *second = obj2;
+        return first.message.timestamp < second.message.timestamp ? NSOrderedAscending : NSOrderedDescending;
+    }];
+    for (NIMMessageModel *model in sortModels) {
         if ([self modelIsExist:model]) {
             continue;
         }
@@ -158,6 +167,7 @@
 - (NSArray<NSNumber *> *)addMessageModels:(NSArray*)models
 {
     NSInteger index = models.count;
+    //判断插入位置
     for (NSInteger i=0; i<models.count; i++) {
         NIMMessageModel *model = models[i];
         NSTimeInterval timestamp = model.message.timestamp;
@@ -234,6 +244,34 @@
         [_modelArray removeObject:msgModel];
         [_msgIdDict removeObjectForKey:msgModel.message.messageId];
         [dels addObject:@(delMsgIndex)];
+    }
+    return dels;
+}
+
+- (NSArray<NSNumber *> *)deleteModels:(NSRange)range
+{
+    NSArray *models = [_modelArray subarrayWithRange:range];
+    NSMutableArray *dels = [NSMutableArray array];
+    NSMutableArray *all = [NSMutableArray arrayWithArray:_modelArray];
+    for (NIMMessageModel *model in models) {
+        if ([model isKindOfClass:[NIMTimestampModel class]]) {
+            continue;
+        }
+        NSInteger delTimeIndex = -1;
+        NSInteger delMsgIndex = [all indexOfObject:model];
+        if (delMsgIndex > 0) {
+            BOOL delMsgIsSingle = (delMsgIndex == all.count-1 || [all[delMsgIndex+1] isKindOfClass:[NIMTimestampModel class]]);
+            if ([all[delMsgIndex-1] isKindOfClass:[NIMTimestampModel class]] && delMsgIsSingle) {
+                delTimeIndex = delMsgIndex-1;
+                [_modelArray removeObjectAtIndex:delTimeIndex];
+                [dels addObject:@(delTimeIndex)];
+            }
+        }
+        if (delMsgIndex > -1) {
+            [_modelArray removeObject:model];
+            [_msgIdDict removeObjectForKey:model.message.messageId];
+            [dels addObject:@(delMsgIndex)];
+        }
     }
     return dels;
 }

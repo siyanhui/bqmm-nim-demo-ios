@@ -70,13 +70,11 @@ MMEmotionCentreDelegate>//BQMM集成
     [super viewDidLoad];
     [self makeUI];
     [self makeHandlerAndDataSource];
-    
     //BQMM集成
     [[MMEmotionCentre defaultCentre] shouldShowShotcutPopoverAboveView:_sessionInputView.toolBar.emoticonBtn withInput:_sessionInputView.toolBar.inputTextView];
 }
 
-
--(void)dealloc
+- (void)dealloc
 {
     _tableView.delegate = nil;
     _tableView.dataSource = nil;
@@ -180,7 +178,6 @@ MMEmotionCentreDelegate>//BQMM集成
     //fix bug: 竖屏进入会话界面，然后右上角进入群信息，再横屏，左上角返回，横屏的会话界面显示的就是竖屏时的大小
     [self.sessionDatasource cleanCache];
     [self.tableView reloadData];
-    
     //BQMM集成
     [MMEmotionCentre defaultCentre].delegate = self;
 }
@@ -289,7 +286,11 @@ MMEmotionCentreDelegate>//BQMM集成
         if ([self findModel:message]) {
             [self uiUpdateMessage:message];
         }else{
-            [self uiAddMessages:@[message]];
+            if (self.session.sessionType == NIMSessionTypeChatroom) {
+                [self uiAddChatroomMessages:@[message]];
+            }else{
+                [self uiAddMessages:@[message]];
+            }
         }
     }
 }
@@ -543,7 +544,7 @@ MMEmotionCentreDelegate>//BQMM集成
     
     NIMMessage *message = [NIMMessageMaker msgWithText:sendStr];
     message.remoteExt = mmExt;
-
+    
     [self sendMessage:message];
 }
 
@@ -958,11 +959,25 @@ MMEmotionCentreDelegate>//BQMM集成
     
     NSUInteger leftPendingMessageCount = self.pendingMessages.count;
     BOOL animated = leftPendingMessageCount== 0;
+    
+    //聊天室消息最大保存消息量，超过这个消息量则把消息列表的前一半挪出内存。
+    static NSInteger NTESMaxChatroomMessageCount = 200;
+    
     dispatch_sync(dispatch_get_main_queue(), ^{
         NSArray *insert = [weakSelf.sessionDatasource addMessageModels:models];
         [weakSelf.tableView beginUpdates];
         [weakSelf.layoutManager insertTableViewCellAtRows:insert animated:animated];
         [weakSelf.tableView endUpdates];
+
+        NSInteger count = weakSelf.sessionDatasource.modelArray.count;
+        if (count > NTESMaxChatroomMessageCount) {
+            NSRange deleteRange = NSMakeRange(0, count/2);
+            [weakSelf.tableView beginUpdates];
+            NSArray *delete = [weakSelf.sessionDatasource deleteModels:deleteRange];
+            [weakSelf.layoutManager deleteCellAtIndexs:delete];
+            [weakSelf.tableView endUpdates];
+
+        }
     });
     
     if (leftPendingMessageCount)

@@ -17,15 +17,13 @@
 
 @interface NIMInputEmoticonTabView : UIControl
 
-@property (nonatomic,strong) NSArray *emoticonCatalogs;
-
 @property (nonatomic,strong) UIButton * sendButton;
 
 @property (nonatomic,weak)   id<NIMInputEmoticonTabDelegate>  delegate;
 
-- (instancetype)initWithFrame:(CGRect)frame catalogs:(NSArray*)emoticonCatalogs;
-
 - (void)selectTabIndex:(NSInteger)index;
+
+- (void)loadCatalogs:(NSArray*)emoticonCatalogs;
 
 @end
 

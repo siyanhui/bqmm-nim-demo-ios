@@ -23,13 +23,16 @@
 #import "NIMKit.h"
 #import "NTESDataManager.h"
 #import "NTESSDKConfig.h"
+
 #import "NIMUIConfig.h"
 //BQMM集成
 #import <BQMM/BQMM.h>
 
 NSString *NTESNotificationLogout = @"NTESNotificationLogout";
 @interface NTESAppDelegate ()<NIMLoginManagerDelegate>
+
 @property (nonatomic,strong) NTESSDKConfig *config;
+
 @end
 
 @implementation NTESAppDelegate
@@ -48,6 +51,7 @@ NSString *NTESNotificationLogout = @"NTESNotificationLogout";
     NSString *secret = @"appSecret";
     [[MMEmotionCentre defaultCentre] setAppId:appId
                                        secret:secret];
+
     
     MMTheme *theme = [[MMTheme alloc] init];
     theme.keyboardHeight = [NIMUIConfig bottomInputViewHeight];
@@ -134,11 +138,13 @@ NSString *NTESNotificationLogout = @"NTESNotificationLogout";
 {
     if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerForRemoteNotifications)])
     {
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+        
         UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types
                                                                                  categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-        [[UIApplication sharedApplication] registerForRemoteNotifications];
+
     }
     else
     {
@@ -184,7 +190,6 @@ NSString *NTESNotificationLogout = @"NTESNotificationLogout";
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginController];
     self.window.rootViewController = nav;
 }
-
 
 #pragma mark - 注销
 -(void)logout:(NSNotification*)note

@@ -42,6 +42,7 @@ NSInteger NIMCustomPageViewHeight    = 159;
 - (void)setConfig:(id<NIMSessionConfig>)config{
     _config = config;
     [self loadUIComponents];
+    [self reloadData];
 }
 
 
@@ -62,30 +63,24 @@ NSInteger NIMCustomPageViewHeight    = 159;
     _emotPageController.currentPageIndicatorTintColor = [UIColor grayColor];
     [self addSubview:_emotPageController];
     [_emotPageController setUserInteractionEnabled:NO];
-    
-    NSArray *catalogs = [self reloadData];
-    _tabView = [[NIMInputEmoticonTabView alloc] initWithFrame:CGRectMake(0, 0, self.nim_width, 0) catalogs:catalogs];
-    _tabView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    _tabView.delegate = self;
-    [_tabView.sendButton addTarget:self action:@selector(didPressSend:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:_tabView];
-    
-    if (_currentCatalogData.pagesCount > 0) {
-        _emotPageController.numberOfPages = [_currentCatalogData pagesCount];
-        _emotPageController.currentPage = 0;
-        [_emoticonPageView scrollToPage:0];
-    }
 }
 
 - (void)setFrame:(CGRect)frame{
     CGFloat originalWidth = self.frame.size.width;
     [super setFrame:frame];
     if (originalWidth != frame.size.width) {
-        self.tabView.emoticonCatalogs = [self reloadData];
+        [self reloadData];
     }
 }
 
-- (NSArray *)reloadData{
+- (void)reloadData{
+    NSArray *data = [self loadCatalogAndChartlet];
+    self.totalCatalogData   = data;
+    self.currentCatalogData = data.firstObject;
+}
+
+- (NSArray *)loadCatalogAndChartlet
+{
     NIMInputEmoticonCatalog * defaultCatalog = [self loadDefaultCatalog];
     BOOL disableCharlet = NO;
     if ([self.config respondsToSelector:@selector(disableCharlet)]) {
@@ -93,7 +88,6 @@ NSInteger NIMCustomPageViewHeight    = 159;
     }
     NSArray *charlets = disableCharlet ? nil : [self loadChartlet];
     NSArray *catalogs = defaultCatalog? [@[defaultCatalog] arrayByAddingObjectsFromArray:charlets] : charlets;
-    self.currentCatalogData = catalogs.firstObject;
     return catalogs;
 }
 
@@ -111,7 +105,7 @@ NSInteger NIMCustomPageViewHeight    = 159;
 - (NSInteger)sumPages
 {
     __block NSInteger pagesCount = 0;
-    [self.tabView.emoticonCatalogs enumerateObjectsUsingBlock:^(NIMInputEmoticonCatalog* data, NSUInteger idx, BOOL *stop) {
+    [self.totalCatalogData enumerateObjectsUsingBlock:^(NIMInputEmoticonCatalog* data, NSUInteger idx, BOOL *stop) {
         pagesCount += data.pagesCount;
     }];
     return pagesCount;
@@ -200,7 +194,7 @@ NSInteger NIMCustomPageViewHeight    = 159;
 {
     NSInteger page  = 0;
     NIMInputEmoticonCatalog *emoticon;
-    for (emoticon in self.tabView.emoticonCatalogs) {
+    for (emoticon in self.totalCatalogData) {
         NSInteger newPage = page + emoticon.pagesCount;
         if (newPage > index) {
             break;
@@ -237,7 +231,7 @@ NSInteger NIMCustomPageViewHeight    = 159;
 //找到某组表情的起始位置
 - (NSInteger)pageIndexWithEmoticon:(NIMInputEmoticonCatalog *)emoticonCatalog{
     NSInteger pageIndex = 0;
-    for (NIMInputEmoticonCatalog *emoticon in self.tabView.emoticonCatalogs) {
+    for (NIMInputEmoticonCatalog *emoticon in self.totalCatalogData) {
         if (emoticon == emoticonCatalog) {
             break;
         }
@@ -255,7 +249,7 @@ NSInteger NIMCustomPageViewHeight    = 159;
 - (NIMInputEmoticonCatalog *)emoticonWithIndex:(NSInteger)index {
     NSInteger page  = 0;
     NIMInputEmoticonCatalog *emoticon;
-    for (emoticon in self.tabView.emoticonCatalogs) {
+    for (emoticon in self.totalCatalogData) {
         NSInteger newPage = page + emoticon.pagesCount;
         if (newPage > index) {
             break;
@@ -284,7 +278,7 @@ NSInteger NIMCustomPageViewHeight    = 159;
     self.emotPageController.numberOfPages = [emticon pagesCount];
     self.emotPageController.currentPage = [self pageIndexWithTotalIndex:index];
     
-    NSInteger selectTabIndex = [self.tabView.emoticonCatalogs indexOfObject:emticon];
+    NSInteger selectTabIndex = [self.totalCatalogData indexOfObject:emticon];
     [self.tabView selectTabIndex:selectTabIndex];
 }
 
@@ -305,7 +299,7 @@ NSInteger NIMCustomPageViewHeight    = 159;
 
 #pragma mark - InputEmoticonTabDelegate
 - (void)tabView:(NIMInputEmoticonTabView *)tabView didSelectTabIndex:(NSInteger) index{
-    self.currentCatalogData = tabView.emoticonCatalogs[index];
+    self.currentCatalogData = self.totalCatalogData[index];
 }
 
 #pragma mark - Private
@@ -315,24 +309,37 @@ NSInteger NIMCustomPageViewHeight    = 159;
     [self.emoticonPageView scrollToPage:[self pageIndexWithEmoticon:_currentCatalogData]];
 }
 
-- (NIMInputEmoticonCatalog *)nextCatalogData{
-    if (!self.currentCatalogData) {
-        return nil;
-    }
-    NSInteger index = [self.tabView.emoticonCatalogs indexOfObject:self.currentCatalogData];
-    if (index >= self.tabView.emoticonCatalogs.count) {
-        return nil;
-    }else{
-        return self.tabView.emoticonCatalogs[index+1];
-    }
+- (void)setTotalCatalogData:(NSArray *)totalCatalogData
+{
+    _totalCatalogData = totalCatalogData;
+    [self.tabView loadCatalogs:totalCatalogData];
 }
 
 - (NSArray *)allEmoticons{
     NSMutableArray *array = [[NSMutableArray alloc] init];
-    for (NIMInputEmoticonCatalog *catalog in self.tabView.emoticonCatalogs) {
+    for (NIMInputEmoticonCatalog *catalog in self.totalCatalogData) {
         [array addObjectsFromArray:catalog.emoticons];
     }
     return array;
+}
+
+
+#pragma mark - Get
+- (NIMInputEmoticonTabView *)tabView
+{
+    if (!_tabView) {
+        _tabView = [[NIMInputEmoticonTabView alloc] initWithFrame:CGRectMake(0, 0, self.nim_width, 0)];
+        _tabView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        _tabView.delegate = self;
+        [_tabView.sendButton addTarget:self action:@selector(didPressSend:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:_tabView];
+    
+        if (_currentCatalogData.pagesCount > 0) {
+            _emotPageController.numberOfPages = [_currentCatalogData pagesCount];
+            _emotPageController.currentPage = 0;
+        }
+    }
+    return _tabView;
 }
 
 @end

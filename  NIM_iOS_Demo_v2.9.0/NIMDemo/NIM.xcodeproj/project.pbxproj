@@ -59,7 +59,6 @@
 		6173AED81BAAC8F500854D49 /* NTESSignSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6173AED71BAAC8F500854D49 /* NTESSignSettingViewController.m */; };
 		6173AEDB1BAAD03900854D49 /* NTESUserUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 6173AEDA1BAAD03900854D49 /* NTESUserUtil.m */; };
 		61775E931C571FE500C1DA03 /* NTESLiveActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61775E921C571FE500C1DA03 /* NTESLiveActionView.m */; };
-		617C4FF71BE06D26009AD1B4 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 61530BE81BABAD5900FE50CC /* libstdc++.6.0.9.tbd */; };
 		617D015D1AEDE03900C6DB77 /* UIImage+NTESColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 617D015C1AEDE03900C6DB77 /* UIImage+NTESColor.m */; };
 		61839A9B1BF9B60400702DF0 /* NTESFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61839A9A1BF9B60400702DF0 /* NTESFPSLabel.m */; };
 		6185D2991BAAFBAF0046F90F /* NTESSettingCheckCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6185D2981BAAFBAF0046F90F /* NTESSettingCheckCell.m */; };
@@ -195,15 +194,16 @@
 		AE58995A1A6FA7AC0070536A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE5899591A6FA7AC0070536A /* SystemConfiguration.framework */; };
 		AEA87FE11A81CAD600ACC3BA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEA87FE01A81CAD500ACC3BA /* AVFoundation.framework */; };
 		BD52DB3E1B8F300E00434D0E /* NTESCADisplayLinkHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = BD52DB3D1B8F300E00434D0E /* NTESCADisplayLinkHolder.m */; };
+		BD73C07F1D9905D200F1C436 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BD73C07E1D9905D200F1C436 /* libc++.tbd */; };
 		BDA64F1A1CA38A3800BCF04D /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDA64F191CA38A3800BCF04D /* VideoToolbox.framework */; };
 		BDB0FC691BA7E6D30066654D /* NTESGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = BDB0FC681BA7E6D30066654D /* NTESGLView.m */; };
 		C4E43434FD003E69D8A1CE98 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16AF9898D58E36D61F8B0727 /* libPods.a */; };
-		CC5469631DACC075003E6BF3 /* NTESChatroomEmojiContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5469621DACC075003E6BF3 /* NTESChatroomEmojiContentView.m */; };
-		CCE891941DAB67B400848D09 /* BQMM.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CCE8918B1DAB67B400848D09 /* BQMM.bundle */; };
-		CCE891951DAB67B400848D09 /* BQMM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCE8918C1DAB67B400848D09 /* BQMM.framework */; };
-		CCE891961DAB67B400848D09 /* MMTextAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE8918F1DAB67B400848D09 /* MMTextAttachment.m */; };
-		CCE891971DAB67B400848D09 /* MMTextParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE891911DAB67B400848D09 /* MMTextParser.m */; };
-		CCE891981DAB67B400848D09 /* MMTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE891931DAB67B400848D09 /* MMTextView.m */; };
+		CC18F99A1DE7EAFC00920FD5 /* BQMM.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CC18F9911DE7EAFC00920FD5 /* BQMM.bundle */; };
+		CC18F99B1DE7EAFC00920FD5 /* BQMM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC18F9921DE7EAFC00920FD5 /* BQMM.framework */; };
+		CC18F99C1DE7EAFC00920FD5 /* MMTextAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = CC18F9951DE7EAFC00920FD5 /* MMTextAttachment.m */; };
+		CC18F99D1DE7EAFC00920FD5 /* MMTextParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CC18F9971DE7EAFC00920FD5 /* MMTextParser.m */; };
+		CC18F99E1DE7EAFC00920FD5 /* MMTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC18F9991DE7EAFC00920FD5 /* MMTextView.m */; };
+		CC18F9A11DE7ED6D00920FD5 /* NTESChatroomEmojiContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC18F9A01DE7ED6D00920FD5 /* NTESChatroomEmojiContentView.m */; };
 		E4168E291B6A364800F3D35D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4168E281B6A364800F3D35D /* AudioToolbox.framework */; };
 		E4168E2B1B6A364F00F3D35D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4168E2A1B6A364F00F3D35D /* CoreMedia.framework */; };
 		E4562D8B1CE0855A00D66909 /* NTESSDKConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = E4562D8A1CE0855A00D66909 /* NTESSDKConfig.m */; };
@@ -259,6 +259,8 @@
 		611ABF101B42321600B8706C /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = ../../Settings.bundle; sourceTree = "<group>"; };
 		61206EE51C1E607B009E4C78 /* NTESChatroomListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESChatroomListCell.h; sourceTree = "<group>"; };
 		61206EE61C1E607B009E4C78 /* NTESChatroomListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESChatroomListCell.m; sourceTree = "<group>"; };
+		6121D1C91D9B9F8D005FAD3B /* CallKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CallKit.framework; path = System/Library/Frameworks/CallKit.framework; sourceTree = SDKROOT; };
+		6121D1CB1D9B9FCC005FAD3B /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
 		61248A581C474404006300E1 /* NTESSessionCustomContentConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESSessionCustomContentConfig.h; sourceTree = "<group>"; };
 		61248A591C474404006300E1 /* NTESSessionCustomContentConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESSessionCustomContentConfig.m; sourceTree = "<group>"; };
 		612CACEC1BB1484C00C348B5 /* NTESContactDataMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESContactDataMember.h; sourceTree = "<group>"; };
@@ -560,19 +562,20 @@
 		AEB8367F1A772C2F00E7493E /* NIMDemo-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NIMDemo-Prefix.pch"; sourceTree = "<group>"; };
 		BD52DB3C1B8F300E00434D0E /* NTESCADisplayLinkHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESCADisplayLinkHolder.h; sourceTree = "<group>"; };
 		BD52DB3D1B8F300E00434D0E /* NTESCADisplayLinkHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESCADisplayLinkHolder.m; sourceTree = "<group>"; };
+		BD73C07E1D9905D200F1C436 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		BDA64F191CA38A3800BCF04D /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		BDB0FC671BA7E6D30066654D /* NTESGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESGLView.h; sourceTree = "<group>"; };
 		BDB0FC681BA7E6D30066654D /* NTESGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESGLView.m; sourceTree = "<group>"; };
-		CC5469611DACC075003E6BF3 /* NTESChatroomEmojiContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESChatroomEmojiContentView.h; sourceTree = "<group>"; };
-		CC5469621DACC075003E6BF3 /* NTESChatroomEmojiContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESChatroomEmojiContentView.m; sourceTree = "<group>"; };
-		CCE8918B1DAB67B400848D09 /* BQMM.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BQMM.bundle; sourceTree = "<group>"; };
-		CCE8918C1DAB67B400848D09 /* BQMM.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BQMM.framework; sourceTree = "<group>"; };
-		CCE8918E1DAB67B400848D09 /* MMTextAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTextAttachment.h; sourceTree = "<group>"; };
-		CCE8918F1DAB67B400848D09 /* MMTextAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTextAttachment.m; sourceTree = "<group>"; };
-		CCE891901DAB67B400848D09 /* MMTextParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTextParser.h; sourceTree = "<group>"; };
-		CCE891911DAB67B400848D09 /* MMTextParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTextParser.m; sourceTree = "<group>"; };
-		CCE891921DAB67B400848D09 /* MMTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTextView.h; sourceTree = "<group>"; };
-		CCE891931DAB67B400848D09 /* MMTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTextView.m; sourceTree = "<group>"; };
+		CC18F9911DE7EAFC00920FD5 /* BQMM.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BQMM.bundle; sourceTree = "<group>"; };
+		CC18F9921DE7EAFC00920FD5 /* BQMM.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BQMM.framework; sourceTree = "<group>"; };
+		CC18F9941DE7EAFC00920FD5 /* MMTextAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTextAttachment.h; sourceTree = "<group>"; };
+		CC18F9951DE7EAFC00920FD5 /* MMTextAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTextAttachment.m; sourceTree = "<group>"; };
+		CC18F9961DE7EAFC00920FD5 /* MMTextParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTextParser.h; sourceTree = "<group>"; };
+		CC18F9971DE7EAFC00920FD5 /* MMTextParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTextParser.m; sourceTree = "<group>"; };
+		CC18F9981DE7EAFC00920FD5 /* MMTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTextView.h; sourceTree = "<group>"; };
+		CC18F9991DE7EAFC00920FD5 /* MMTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTextView.m; sourceTree = "<group>"; };
+		CC18F99F1DE7ED6D00920FD5 /* NTESChatroomEmojiContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESChatroomEmojiContentView.h; sourceTree = "<group>"; };
+		CC18F9A01DE7ED6D00920FD5 /* NTESChatroomEmojiContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESChatroomEmojiContentView.m; sourceTree = "<group>"; };
 		DF30F6A4FA82195516F742F7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E4168E281B6A364800F3D35D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		E4168E2A1B6A364F00F3D35D /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -585,6 +588,7 @@
 		E45E177D1CA8CBA500C4ED69 /* NTESLogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESLogViewController.h; sourceTree = "<group>"; };
 		E45E177E1CA8CBA500C4ED69 /* NTESLogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESLogViewController.m; sourceTree = "<group>"; };
 		E45E177F1CA8CBA500C4ED69 /* NTESLogViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTESLogViewController.xib; sourceTree = "<group>"; };
+		E485CA301D334A17004C7710 /* libNIMAVChat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libNIMAVChat.a; path = "../NIMAVChat/build/Debug-iphoneos/libNIMAVChat.a"; sourceTree = "<group>"; };
 		E49D53BF1B451C7400A869AC /* NSData+NTES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+NTES.h"; sourceTree = "<group>"; };
 		E49D53C01B451C7400A869AC /* NSData+NTES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+NTES.m"; sourceTree = "<group>"; };
 		E4E8D98F1BB131F20077AE60 /* nim_debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = nim_debug.xcconfig; sourceTree = "<group>"; };
@@ -597,8 +601,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD73C07F1D9905D200F1C436 /* libc++.tbd in Frameworks */,
 				619184891C45E4D000BB2FE9 /* libNIMKit.a in Frameworks */,
-				617C4FF71BE06D26009AD1B4 /* libstdc++.6.0.9.tbd in Frameworks */,
 				61530BEB1BABAD8200FE50CC /* libz.tbd in Frameworks */,
 				61530BE71BABAD3B00FE50CC /* libsqlite3.0.tbd in Frameworks */,
 				BDA64F1A1CA38A3800BCF04D /* VideoToolbox.framework in Frameworks */,
@@ -610,7 +614,7 @@
 				AEA87FE11A81CAD600ACC3BA /* AVFoundation.framework in Frameworks */,
 				61CF576F1A787DB000B43072 /* MobileCoreServices.framework in Frameworks */,
 				AE58995A1A6FA7AC0070536A /* SystemConfiguration.framework in Frameworks */,
-				CCE891951DAB67B400848D09 /* BQMM.framework in Frameworks */,
+				CC18F99B1DE7EAFC00920FD5 /* BQMM.framework in Frameworks */,
 				C4E43434FD003E69D8A1CE98 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -630,6 +634,10 @@
 		5176189D0086B38FE643A26A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6121D1CB1D9B9FCC005FAD3B /* PushKit.framework */,
+				6121D1C91D9B9F8D005FAD3B /* CallKit.framework */,
+				BD73C07E1D9905D200F1C436 /* libc++.tbd */,
+				E485CA301D334A17004C7710 /* libNIMAVChat.a */,
 				BDA64F191CA38A3800BCF04D /* VideoToolbox.framework */,
 				61530BEA1BABAD8200FE50CC /* libz.tbd */,
 				61530BE81BABAD5900FE50CC /* libstdc++.6.0.9.tbd */,
@@ -770,10 +778,10 @@
 		6159DF571C45FAC500E32EB4 /* SessionContentView */ = {
 			isa = PBXGroup;
 			children = (
+				CC18F99F1DE7ED6D00920FD5 /* NTESChatroomEmojiContentView.h */,
+				CC18F9A01DE7ED6D00920FD5 /* NTESChatroomEmojiContentView.m */,
 				6159DF581C45FAF500E32EB4 /* NTESChatroomTextContentView.h */,
 				6159DF591C45FAF500E32EB4 /* NTESChatroomTextContentView.m */,
-				CC5469611DACC075003E6BF3 /* NTESChatroomEmojiContentView.h */,
-				CC5469621DACC075003E6BF3 /* NTESChatroomEmojiContentView.m */,
 			);
 			path = SessionContentView;
 			sourceTree = "<group>";
@@ -1493,7 +1501,7 @@
 		AE5882E71A6F47E10070536A /* NIMDemo */ = {
 			isa = PBXGroup;
 			children = (
-				CCE891881DAB67A600848D09 /* vendor */,
+				CC18F98F1DE7EAFB00920FD5 /* BQMM_SDK */,
 				61F728281A7B23A40076C096 /* Classes */,
 				AE5882EC1A6F47E10070536A /* NTESAppDelegate.h */,
 				AE5882ED1A6F47E10070536A /* NTESAppDelegate.m */,
@@ -1528,41 +1536,33 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		CCE891881DAB67A600848D09 /* vendor */ = {
+		CC18F98F1DE7EAFB00920FD5 /* BQMM_SDK */ = {
 			isa = PBXGroup;
 			children = (
-				CCE891891DAB67B400848D09 /* BQMM_SDK */,
-			);
-			name = vendor;
-			sourceTree = "<group>";
-		};
-		CCE891891DAB67B400848D09 /* BQMM_SDK */ = {
-			isa = PBXGroup;
-			children = (
-				CCE8918A1DAB67B400848D09 /* BQMM */,
-				CCE8918D1DAB67B400848D09 /* BQMM_EXT */,
+				CC18F9901DE7EAFC00920FD5 /* BQMM */,
+				CC18F9931DE7EAFC00920FD5 /* BQMM_EXT */,
 			);
 			path = BQMM_SDK;
 			sourceTree = "<group>";
 		};
-		CCE8918A1DAB67B400848D09 /* BQMM */ = {
+		CC18F9901DE7EAFC00920FD5 /* BQMM */ = {
 			isa = PBXGroup;
 			children = (
-				CCE8918B1DAB67B400848D09 /* BQMM.bundle */,
-				CCE8918C1DAB67B400848D09 /* BQMM.framework */,
+				CC18F9911DE7EAFC00920FD5 /* BQMM.bundle */,
+				CC18F9921DE7EAFC00920FD5 /* BQMM.framework */,
 			);
 			path = BQMM;
 			sourceTree = "<group>";
 		};
-		CCE8918D1DAB67B400848D09 /* BQMM_EXT */ = {
+		CC18F9931DE7EAFC00920FD5 /* BQMM_EXT */ = {
 			isa = PBXGroup;
 			children = (
-				CCE8918E1DAB67B400848D09 /* MMTextAttachment.h */,
-				CCE8918F1DAB67B400848D09 /* MMTextAttachment.m */,
-				CCE891901DAB67B400848D09 /* MMTextParser.h */,
-				CCE891911DAB67B400848D09 /* MMTextParser.m */,
-				CCE891921DAB67B400848D09 /* MMTextView.h */,
-				CCE891931DAB67B400848D09 /* MMTextView.m */,
+				CC18F9941DE7EAFC00920FD5 /* MMTextAttachment.h */,
+				CC18F9951DE7EAFC00920FD5 /* MMTextAttachment.m */,
+				CC18F9961DE7EAFC00920FD5 /* MMTextParser.h */,
+				CC18F9971DE7EAFC00920FD5 /* MMTextParser.m */,
+				CC18F9981DE7EAFC00920FD5 /* MMTextView.h */,
+				CC18F9991DE7EAFC00920FD5 /* MMTextView.m */,
 			);
 			path = BQMM_EXT;
 			sourceTree = "<group>";
@@ -1611,7 +1611,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = NTES;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Netease;
 				TargetAttributes = {
 					AE5882E41A6F47E10070536A = {
@@ -1675,7 +1675,7 @@
 				E45E17821CA8CBA500C4ED69 /* NTESLogViewController.xib in Resources */,
 				E4ED12DD1B6B07EA00316496 /* message.wav in Resources */,
 				61E471601B7D963E00F4A1BF /* NTESNoDisturbSettingViewController.xib in Resources */,
-				CCE891941DAB67B400848D09 /* BQMM.bundle in Resources */,
+				CC18F99A1DE7EAFC00920FD5 /* BQMM.bundle in Resources */,
 				031BB12C1AA449C500FE07C3 /* pinyin.bin in Resources */,
 				61E471481B7D963E00F4A1BF /* NTESLocationViewController.xib in Resources */,
 				61ED4F461AE4FA020073DBD9 /* Files in Resources */,
@@ -1766,7 +1766,7 @@
 				61E4715D1B7D963E00F4A1BF /* NTESClientsTableViewController.m in Sources */,
 				6159DF531C45F79D00E32EB4 /* NTESChatroomConfig.m in Sources */,
 				03A4C9FF1AC2B79700E45E03 /* UIAlertView+NTESBlock.m in Sources */,
-				CCE891981DAB67B400848D09 /* MMTextView.m in Sources */,
+				CC18F99E1DE7EAFC00920FD5 /* MMTextView.m in Sources */,
 				6173AECE1BAAC70200854D49 /* NTESBirthSettingViewController.m in Sources */,
 				61E4715A1B7D963E00F4A1BF /* NTESMutiClientsHeaderView.m in Sources */,
 				6159DF5A1C45FAF500E32EB4 /* NTESChatroomTextContentView.m in Sources */,
@@ -1812,7 +1812,7 @@
 				61E4718D1B7D96AA00F4A1BF /* NTESDemoConfig.m in Sources */,
 				61E471541B7D963E00F4A1BF /* NTESNetChatViewController.m in Sources */,
 				61E471331B7D963E00F4A1BF /* NTESSearchLocalHistoryObject.m in Sources */,
-				CC5469631DACC075003E6BF3 /* NTESChatroomEmojiContentView.m in Sources */,
+				CC18F9A11DE7ED6D00920FD5 /* NTESChatroomEmojiContentView.m in Sources */,
 				6173AED81BAAC8F500854D49 /* NTESSignSettingViewController.m in Sources */,
 				61E471201B7D963E00F4A1BF /* NTESCustomNotificationObject.m in Sources */,
 				6173AEC41BAAB94400854D49 /* NTESUserInfoSettingViewController.m in Sources */,
@@ -1821,7 +1821,7 @@
 				61E471491B7D963E00F4A1BF /* NTESSessionLocalHistoryViewController.m in Sources */,
 				613A2FED1C21049E00508990 /* NTESLiveViewController.m in Sources */,
 				61E4713F1B7D963E00F4A1BF /* NTESAudio2TextViewController.m in Sources */,
-				CCE891971DAB67B400848D09 /* MMTextParser.m in Sources */,
+				CC18F99D1DE7EAFC00920FD5 /* MMTextParser.m in Sources */,
 				61E471341B7D963E00F4A1BF /* NTESSessionMsgConverter.m in Sources */,
 				61EAD9121B82F275005DC715 /* NTESContactAddFriendViewController.m in Sources */,
 				61C2CE521C489F0D00D76104 /* NTESChatroomManager.m in Sources */,
@@ -1841,7 +1841,7 @@
 				6173AEC91BAAC6CB00854D49 /* NTESGenderSettingViewController.m in Sources */,
 				E45E17801CA8CBA500C4ED69 /* NTESLogManager.m in Sources */,
 				61518A4B1CA233390061C4A9 /* NTESNavigationHandler.m in Sources */,
-				CCE891961DAB67B400848D09 /* MMTextAttachment.m in Sources */,
+				CC18F99C1DE7EAFC00920FD5 /* MMTextAttachment.m in Sources */,
 				61E471621B7D963E00F4A1BF /* NTESAboutViewController.m in Sources */,
 				61E471411B7D963E00F4A1BF /* NTESFilePreViewController.m in Sources */,
 				611ABF011B3CF4FC00B8706C /* NTESBadgeView.m in Sources */,
@@ -1915,8 +1915,8 @@
 			baseConfigurationReference = E4E8D98F1BB131F20077AE60 /* nim_debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -1924,10 +1924,8 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1936,7 +1934,6 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1969,8 +1966,8 @@
 			baseConfigurationReference = E4E8D9901BB132040077AE60 /* nim_release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -1978,10 +1975,8 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Cooperation Communication Operating and Support Center China Telecom";
@@ -1990,7 +1985,6 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -2048,7 +2042,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.siyanhui.NIM.demo;
 				PRODUCT_NAME = NIM;
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
@@ -2096,7 +2089,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.siyanhui.NIM.demo;
 				PRODUCT_NAME = NIM;
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
 			};

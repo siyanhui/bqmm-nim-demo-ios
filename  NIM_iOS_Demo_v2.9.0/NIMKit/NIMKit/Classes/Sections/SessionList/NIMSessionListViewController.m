@@ -282,7 +282,7 @@
         default:
             text = @"[未知消息]";
     }
-    if (lastMessage.session.sessionType == NIMSessionTypeP2P) {
+    if (lastMessage.session.sessionType == NIMSessionTypeP2P || lastMessage.messageType == NIMMessageTypeTip) {
         return text;
     }else{
         NSString *nickName = [NIMKitUtil showNick:lastMessage.from inSession:lastMessage.session];

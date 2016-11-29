@@ -10,9 +10,11 @@
 #import "NIMAttributedLabel+NIMKit.h"
 
 //BQMM集成
+
 #import <BQMM/BQMM.h>
 #import "MMTextParser.h"
 #import "MMTextView.h"
+
 @interface NIMTextContentConfig()
 
 //BQMM集成
@@ -31,14 +33,14 @@
     if ([ext[@"txt_msgType"] isEqualToString:@"facetype"]) {
         return CGSizeMake(140, 140);
     }else{
-//        NSString *text = self.message.text;
-//        [self.label nim_setText:text];
+        //        NSString *text = self.message.text;
+        //        [self.label nim_setText:text];
         
         CGFloat msgBubbleMaxWidth    = (cellWidth - 130);
         CGFloat bubbleLeftToContent  = 14;
         CGFloat contentRightToBubble = 14;
         CGFloat msgContentMaxWidth = (msgBubbleMaxWidth - contentRightToBubble - bubbleLeftToContent);
-//        return [self.label sizeThatFits:CGSizeMake(msgContentMaxWidth, CGFLOAT_MAX)];
+        //        return [self.label sizeThatFits:CGSizeMake(msgContentMaxWidth, CGFLOAT_MAX)];
         
         
         CGSize size = CGSizeZero;
@@ -66,7 +68,7 @@
 
 - (UIEdgeInsets)contentViewInsets
 {
-    return self.message.isOutgoingMsg ? UIEdgeInsetsMake(9,11,11,15) : UIEdgeInsetsMake(9,15,11,9);
+    return self.message.isOutgoingMsg ? UIEdgeInsetsMake(11,11,9,15) : UIEdgeInsetsMake(11,15,9,9);
 }
 
 

@@ -192,7 +192,6 @@ NSString *NTESCustomNotificationCountChanged = @"NTESCustomNotificationCountChan
         transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault];
         transition.type = kCATransitionPush;
         transition.subtype = kCATransitionFromTop;
-        transition.delegate = self;
         [nav.view.layer addAnimation:transition forKey:nil];
         nav.navigationBarHidden = YES;
         [nav pushViewController:vc animated:NO];

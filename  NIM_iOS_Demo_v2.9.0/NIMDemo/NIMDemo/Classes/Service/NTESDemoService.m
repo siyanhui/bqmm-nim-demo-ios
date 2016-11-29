@@ -8,7 +8,12 @@
 
 #import "NTESDemoService.h"
 
+@interface NTESDemoService ()
+@property (nonatomic,strong)    NSURLSession    *session;
+@end
+
 @implementation NTESDemoService
+
 + (instancetype)sharedService
 {
     static id instance = nil;
@@ -17,6 +22,14 @@
         instance = [[[self class] alloc] init];
     });
     return instance;
+}
+
+- (instancetype)init
+{
+    if (self = [super init]) {
+        _session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    }
+    return self;
 }
 
 
@@ -42,35 +55,37 @@
     if ([[NIMSDK sharedSDK] isUsingDemoAppKey])
     {
         NSURLRequest *request = [task taskRequest];
-        [NSURLConnection sendAsynchronousRequest:request
-                                           queue:[NSOperationQueue mainQueue]
-                               completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
-                                   id jsonObject = nil;
-                                   NSError *error = connectionError;
-                                   if (connectionError == nil &&
-                                       [response isKindOfClass:[NSHTTPURLResponse class]] &&
-                                       [(NSHTTPURLResponse *)response statusCode] == 200)
-                                   {
-                                       if (data)
-                                       {
-                                           jsonObject = [NSJSONSerialization JSONObjectWithData:data
-                                                                                        options:0
-                                                                                          error:&error];
-                                       }
-                                       else
-                                       {
-                                           error = [NSError errorWithDomain:@"ntes domain"
-                                                                       code:-1
-                                                                   userInfo:@{@"description" : @"invalid data"}];
-
-                                       }
-                                   }
-
-                                   
-                                   [task onGetResponse:jsonObject
-                                                 error:error];
-                                   
-                               }];
+    
+        NSURLSessionTask *sessionTask = [_session dataTaskWithRequest:request
+                                                    completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError) {
+                                                        id jsonObject = nil;
+                                                        NSError *error = connectionError;
+                                                        if (connectionError == nil &&
+                                                            [response isKindOfClass:[NSHTTPURLResponse class]] &&
+                                                            [(NSHTTPURLResponse *)response statusCode] == 200)
+                                                        {
+                                                            if (data)
+                                                            {
+                                                                jsonObject = [NSJSONSerialization JSONObjectWithData:data
+                                                                                                             options:0
+                                                                                                               error:&error];
+                                                            }
+                                                            else
+                                                            {
+                                                                error = [NSError errorWithDomain:@"ntes domain"
+                                                                                            code:-1
+                                                                                        userInfo:@{@"description" : @"invalid data"}];
+                                                                
+                                                            }
+                                                        }
+                                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                                            [task onGetResponse:jsonObject
+                                                                          error:error];
+                                                        });
+                                                        
+                     
+                                              }];
+        [sessionTask resume];
     }
     else
     {

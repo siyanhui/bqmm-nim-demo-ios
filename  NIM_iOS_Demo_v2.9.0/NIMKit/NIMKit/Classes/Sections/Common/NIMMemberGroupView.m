@@ -12,7 +12,7 @@
 #import "NIMTeamCardOperationItem.h"
 #import "NIMCardMemberItem.h"
 
-#define CollectionItemWidth  55
+#define CollectionItemWidth  58
 #define CollectionItemHeight 80
 #define CollectionMinLeft    20 //防止计算后有左右贴边的情况
 #define CollectionEdgeInsetTopFirstLine 25

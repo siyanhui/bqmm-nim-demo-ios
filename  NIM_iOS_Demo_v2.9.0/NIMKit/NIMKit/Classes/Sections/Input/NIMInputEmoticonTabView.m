@@ -25,30 +25,16 @@ const CGFloat InputLineBoarder = .5f;
 
 @end
 
+#define sepColor NIMKit_UIColorFromRGB(0x8A8E93)
 
 @implementation NIMInputEmoticonTabView
-- (instancetype)initWithFrame:(CGRect)frame catalogs:(NSArray*)emoticonCatalogs{
+
+- (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:CGRectMake(0, 0, frame.size.width, NIMInputEmoticonTabViewHeight)];
     if (self) {
-        _emoticonCatalogs = emoticonCatalogs;
         _tabs = [[NSMutableArray alloc] init];
         _seps = [[NSMutableArray alloc] init];
-        UIColor *sepColor = NIMKit_UIColorFromRGB(0x8A8E93);
-        for (NIMInputEmoticonCatalog * catelog in emoticonCatalogs) {
-            UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
-            [button setImage:[UIImage nim_fetchImage:catelog.icon] forState:UIControlStateNormal];
-            [button setImage:[UIImage nim_fetchImage:catelog.iconPressed] forState:UIControlStateHighlighted];
-            [button setImage:[UIImage nim_fetchImage:catelog.iconPressed] forState:UIControlStateSelected];
-            [button addTarget:self action:@selector(onTouchTab:) forControlEvents:UIControlEventTouchUpInside];
-            [button sizeToFit];
-            [self addSubview:button];
-            [_tabs addObject:button];
-            
-            UIView *sep = [[UIView alloc] initWithFrame:CGRectMake(0, 0, InputLineBoarder, NIMInputEmoticonTabViewHeight)];
-            sep.backgroundColor = sepColor;
-            [_seps addObject:sep];
-            [self addSubview:sep];
-        }
+        
         _sendButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_sendButton setTitle:@"发送" forState:UIControlStateNormal];
         _sendButton.titleLabel.font = [UIFont systemFontOfSize:13.f];
@@ -65,6 +51,26 @@ const CGFloat InputLineBoarder = .5f;
         [self addSubview:view];
     }
     return self;
+}
+
+
+- (void)loadCatalogs:(NSArray*)emoticonCatalogs
+{
+    for (NIMInputEmoticonCatalog * catelog in emoticonCatalogs) {
+        UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button setImage:[UIImage nim_fetchImage:catelog.icon] forState:UIControlStateNormal];
+        [button setImage:[UIImage nim_fetchImage:catelog.iconPressed] forState:UIControlStateHighlighted];
+        [button setImage:[UIImage nim_fetchImage:catelog.iconPressed] forState:UIControlStateSelected];
+        [button addTarget:self action:@selector(onTouchTab:) forControlEvents:UIControlEventTouchUpInside];
+        [button sizeToFit];
+        [self addSubview:button];
+        [_tabs addObject:button];
+        
+        UIView *sep = [[UIView alloc] initWithFrame:CGRectMake(0, 0, InputLineBoarder, NIMInputEmoticonTabViewHeight)];
+        sep.backgroundColor = sepColor;
+        [_seps addObject:sep];
+        [self addSubview:sep];
+    }
 }
 
 - (void)onTouchTab:(id)sender{

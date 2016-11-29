@@ -29,7 +29,6 @@ NSString *const NIMTextMessageLabelLinkData = @"NIMTextMessageLabelLinkData";
 //        _textLabel.font = [UIFont systemFontOfSize:NIMKit_Message_Font_Size];
 //        _textLabel.backgroundColor = [UIColor clearColor];
 //        [self addSubview:_textLabel];
-        
         //BQMM集成
         _textMessageView = [[MMTextView alloc] init];
         _textMessageView.backgroundColor = [UIColor clearColor];
@@ -48,8 +47,8 @@ NSString *const NIMTextMessageLabelLinkData = @"NIMTextMessageLabelLinkData";
 - (void)refresh:(NIMMessageModel *)data{
     [super refresh:data];
     //BQMM集成
-//    NSString *text = self.model.message.text;
-//    [_textLabel nim_setText:text];
+    //    NSString *text = self.model.message.text;
+    //    [_textLabel nim_setText:text];
     if (!self.model.message.isOutgoingMsg) {
         _textMessageView.mmTextColor = [UIColor blackColor];
     }else{
@@ -63,7 +62,7 @@ NSString *const NIMTextMessageLabelLinkData = @"NIMTextMessageLabelLinkData";
         _textMessageView.text = data.message.text;
         [_textMessageView setURLAttributes];
     }
-
+    
 }
 
 - (void)layoutSubviews{
@@ -72,7 +71,7 @@ NSString *const NIMTextMessageLabelLinkData = @"NIMTextMessageLabelLinkData";
     CGSize contentsize         = self.model.contentSize;
     CGRect labelFrame = CGRectMake(contentInsets.left, contentInsets.top, contentsize.width, contentsize.height);
     //BQMM集成
-//    self.textLabel.frame = labelFrame;
+    //    self.textLabel.frame = labelFrame;
     
     _textMessageView.frame = labelFrame;
 }

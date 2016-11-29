@@ -27,17 +27,31 @@ NSInteger NIMButtonBegintLeftX = 11;
 {
     NSArray                 *_mediaButtons;
     NSArray                 *_mediaItems;
-    NIMPageView             *_pageView;
 }
+
+@property (nonatomic, strong) NIMPageView *pageView;
 
 @end
 
 @implementation NIMInputMoreContainerView
 
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        _pageView = [[NIMPageView alloc] initWithFrame:self.bounds];
+        _pageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        _pageView.dataSource = self;
+        [self addSubview:_pageView];
+    }
+    return self;
+}
+
 - (void)setConfig:(id<NIMSessionConfig>)config
 {
     _config = config;
     [self genMediaButtons];
+    [self.pageView reloadData];
 }
 
 
@@ -74,26 +88,17 @@ NSInteger NIMButtonBegintLeftX = 11;
             }
         }];
     }
-    
     _mediaButtons = mediaButtons;
     _mediaItems = mediaItems;
-    
-    _pageView = [[NIMPageView alloc] initWithFrame:self.bounds];
-    _pageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    _pageView.dataSource = self;
-    [self addSubview:_pageView];
-    [_pageView scrollToPage:0];
 }
 
 - (void)setFrame:(CGRect)frame{
     CGFloat originalWidth = self.frame.size.width;
     [super setFrame:frame];
     if (originalWidth != frame.size.width) {
-        [_pageView reloadData];
+        [self.pageView reloadData];
     }
 }
-
-
 
 - (void)dealloc
 {

@@ -226,6 +226,12 @@
                             case NIMTeamUpdateTagUpdateInfoMode:
                                 formatedMessage = [NSString stringWithFormat:@"%@更新了群资料修改权限",source];
                                 break;
+                            case NIMTeamUpdateTagMuteMode:{
+                                NIMTeam *team = [[NIMSDK sharedSDK].teamManager teamById:message.session.sessionId];
+                                BOOL inAllMuteMode = [team inAllMuteMode];
+                                formatedMessage = inAllMuteMode? [NSString stringWithFormat:@"%@设置了群全体禁言",source]: [NSString stringWithFormat:@"%@取消了全体禁言",source];
+                                break;
+                            }
                             default:
                                 break;
                                 
@@ -253,10 +259,10 @@
                 formatedMessage = [NSString stringWithFormat:@"%@转移了群主身份给%@",source,targetText];
                 break;
             case NIMTeamOperationTypeAddManager:
-                formatedMessage = [NSString stringWithFormat:@"%@被群主添加为群管理员",targetText];
+                formatedMessage = [NSString stringWithFormat:@"%@被添加为群管理员",targetText];
                 break;
             case NIMTeamOperationTypeRemoveManager:
-                formatedMessage = [NSString stringWithFormat:@"%@被群主撤销了群管理员身份",targetText];
+                formatedMessage = [NSString stringWithFormat:@"%@被撤销了群管理员身份",targetText];
                 break;
             case NIMTeamOperationTypeAcceptInvitation:
                 formatedMessage = [NSString stringWithFormat:@"%@接受%@的邀请进群",source,targetText];
@@ -407,6 +413,14 @@
         case NIMChatroomEventTypeMemberUpdateInfo:
         {
             return [NSString stringWithFormat:@"%@更新了自己的个人信息",targetText];
+        }
+        case NIMChatroomEventTypeRoomMuted:
+        {
+            return @"全体禁言，管理员可发言";
+        }
+        case NIMChatroomEventTypeRoomUnMuted:
+        {
+            return @"解除全体禁言";
         }
         default:
             break;

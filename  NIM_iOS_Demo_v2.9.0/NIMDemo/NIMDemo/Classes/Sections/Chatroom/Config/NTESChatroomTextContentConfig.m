@@ -32,13 +32,13 @@
     if ([ext[@"txt_msgType"] isEqualToString:@"facetype"]) {
         return CGSizeMake(100, 100);
     }else{
-//        NSString *text = self.message.text;
-//        [self.label nim_setText:text];
+        //        NSString *text = self.message.text;
+        //        [self.label nim_setText:text];
         CGFloat msgBubbleMaxWidth    = (cellWidth - 130);
         CGFloat bubbleLeftToContent  = 15;
         CGFloat contentRightToBubble = 0;
         CGFloat msgContentMaxWidth = (msgBubbleMaxWidth - contentRightToBubble - bubbleLeftToContent);
-//        return [self.label sizeThatFits:CGSizeMake(msgContentMaxWidth, CGFLOAT_MAX)];
+        //        return [self.label sizeThatFits:CGSizeMake(msgContentMaxWidth, CGFLOAT_MAX)];
         
         CGSize size = CGSizeZero;
         if (ext[@"msg_data"] != nil) {

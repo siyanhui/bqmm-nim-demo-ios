@@ -226,7 +226,6 @@ static char PresentingViewAddress;  //正在Present其他视图的view
     group.duration				= AnimateDuartion;
     group.animations			= [NSArray arrayWithObjects:scaleAnimation,moveAnimation,nil];
     group.timingFunction		= [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-    group.delegate				= self;
     group.fillMode				= kCAFillModeForwards;
     group.removedOnCompletion	= NO;
     group.autoreverses			= NO;
@@ -267,7 +266,6 @@ static char PresentingViewAddress;  //正在Present其他视图的view
     group.duration            = AnimateDuartion;
     group.animations          = [NSArray arrayWithObjects:scaleAnimation,moveAnimation,nil];
     group.timingFunction      = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-    group.delegate            = self;
     group.fillMode            = kCAFillModeForwards;
     group.removedOnCompletion = NO;
     group.autoreverses        = NO;

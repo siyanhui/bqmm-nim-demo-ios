@@ -45,6 +45,8 @@
 
 - (NSArray<NSNumber *> *)deleteMessageModel:(NIMMessageModel*)model;
 
+- (NSArray<NSNumber *> *)deleteModels:(NSRange)range;
+
 - (NSDictionary *)checkReceipt;
 
 //清理缓存数据
