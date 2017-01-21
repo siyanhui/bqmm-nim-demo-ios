@@ -47,10 +47,12 @@ NSString *NTESNotificationLogout = @"NTESNotificationLogout";
     [[NIMSDKConfig sharedConfig] setDelegate:_config];
     
     //BQMM集成  BQMM初始化
-    NSString *appId = @"appId";
-    NSString *secret = @"appSecret";
-    [[MMEmotionCentre defaultCentre] setAppId:appId
-                                       secret:secret];
+//    NSString *appId = @"appId";
+//    NSString *secret = @"appSecret";
+//    [[MMEmotionCentre defaultCentre] setAppId:appId
+//                                       secret:secret];
+    [[MMEmotionCentre defaultCentre] setAppId:@"fa52e6b969ec4c9189612c8e6fed8ade"
+                                       secret:@"c7ee54db33744295917fe5fd6f2a6772"];
 
     
     MMTheme *theme = [[MMTheme alloc] init];
