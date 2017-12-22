@@ -241,12 +241,12 @@ typedef enum
 - (void)clearCache;
 
 
-//流行表情数据接口
+//trending gif data
 - (void)trendingGifsAt:(int)page
           withPageSize:(int)pageSize
      completionHandler:(void (^ __nonnull)(NSArray<MMGif *> * __nullable gifs, NSError * __nullable error))completionHandler;
 
-//搜索表情数据接口
+//search gif data
 - (void)searchGifsWithKey:(NSString * _Nullable)key
                        At:(int)page
              withPageSize:(int)pageSize

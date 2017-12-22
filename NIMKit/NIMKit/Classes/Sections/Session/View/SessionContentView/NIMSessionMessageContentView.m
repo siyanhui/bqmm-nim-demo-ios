@@ -38,8 +38,6 @@
     _model = data;
     [_bubbleImageView setImage:[self chatBubbleImageForState:UIControlStateNormal outgoing:data.message.isOutgoingMsg]];
     [_bubbleImageView setHighlightedImage:[self chatBubbleImageForState:UIControlStateHighlighted outgoing:data.message.isOutgoingMsg]];
-    
-    //BQMM集成  TODO
     _bubbleImageView.hidden = false;
     [self setNeedsLayout];
 }
