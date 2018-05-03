@@ -50,13 +50,11 @@ NSString *NTESNotificationLogout = @"NTESNotificationLogout";
     //    NSString *secret = @"appSecret";
     //    [[MMEmotionCentre defaultCentre] setAppId:appId
     //                                       secret:secret];
-    NSString *appId = @"15e0710942ec49a29d2224a6af4460ee";
-    NSString *secret = @"b11e0936a9d04be19300b1d6eec0ccd5";
-    [[MMEmotionCentre defaultCentre] setAppId:appId
-                                       secret:secret];
     
     
+    //BQMM集成
     MMTheme *theme = [[MMTheme alloc] init];
+    theme.keyboardHeight = 216;
     [[MMEmotionCentre defaultCentre] setTheme:theme];
     [MMEmotionCentre defaultCentre].sdkMode = MMSDKModeIM;
     [MMEmotionCentre defaultCentre].sdkLanguage = MMLanguageChinese;
@@ -104,6 +102,8 @@ NSString *NTESNotificationLogout = @"NTESNotificationLogout";
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
+    //BQMM集成
+    [[MMEmotionCentre defaultCentre] clearCache];
 }
 
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken

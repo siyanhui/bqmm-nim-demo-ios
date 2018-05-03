@@ -9,7 +9,7 @@
 #import "NIMTextContentConfig.h"
 #import "M80AttributedLabel+NIMKit.h"
 #import "NIMKit.h"
-
+#import <BQMM/BQMM.h>
 @interface NIMTextContentConfig()
 
 @property (nonatomic,strong) M80AttributedLabel *label;
@@ -25,21 +25,14 @@
     //BQMM集成
     NSDictionary *ext = message.remoteExt;
     if ([ext[TEXT_MESG_TYPE] isEqualToString:TEXT_MESG_FACE_TYPE]) {
-        return CGSizeMake(140, 140);
+        return [MMImageView sizeForImageSize:CGSizeMake(120, 120) imgMaxSize:CGSizeMake(120, 120)];
     }else if([ext[TEXT_MESG_TYPE] isEqualToString:TEXT_MESG_WEB_TYPE]) {
         
         NSDictionary *msgData = ext[TEXT_MESG_DATA];
         float height = [msgData[WEBSTICKER_HEIGHT] floatValue];
         float width = [msgData[WEBSTICKER_WIDTH] floatValue];
         //宽最大200 高最大 150
-        if (width > 200) {
-            height = 200.0 / width * height;
-            width = 200;
-        }else if(height > 150) {
-            width = 150.0 / height * width;
-            height = 150;
-        }
-        return CGSizeMake(width, height);
+        return [MMImageView sizeForImageSize:CGSizeMake(width, height) imgMaxSize:CGSizeMake(200, 150)];
     }else{
         NSString *text = message.text;
         [self.label nim_setText:text];

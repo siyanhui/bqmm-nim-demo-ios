@@ -23,7 +23,8 @@
 
 @interface NTESChatroomEmojiContentView()
 
-@property (nonatomic,strong,readwrite) UIImageView * imageView;
+//BQMM集成
+@property (nonatomic,strong,readwrite) MMImageView * imageView;
 
 @property (nonatomic,strong) NIMLoadProgressView * progressView;
 
@@ -35,7 +36,7 @@
     self = [super initSessionMessageContentView];
     if (self) {
         self.opaque = YES;
-        _imageView  = [[UIImageView alloc] initWithFrame:CGRectZero];
+        _imageView  = [[MMImageView alloc] initWithFrame:CGRectZero];
         _imageView.backgroundColor = [UIColor clearColor];
         [self addSubview:_imageView];
         _progressView = [[NIMLoadProgressView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
@@ -49,32 +50,6 @@
 - (void)refresh:(NIMMessageModel *)data{
     [super refresh:data];
     self.bubbleImageView.hidden = YES;
-    //BQMM集成
-    self.imageView.image = [UIImage imageNamed:@"mm_emoji_loading"];
-    NSDictionary *ext = data.message.remoteExt;
-    if ([ext[@"txt_msgType"] isEqualToString:@"facetype"]) {
-        
-        NSArray *codes = nil;
-        if (ext[@"msg_data"]) {
-            codes = @[ext[@"msg_data"][0][0]];
-        }
-        __weak typeof(self) weakself = self;
-        [[MMEmotionCentre defaultCentre] fetchEmojisByType:MMFetchTypeBig codes:codes completionHandler:^(NSArray *emojis) {
-            if (emojis.count > 0) {
-                MMEmoji *emoji = emojis[0];
-                if ([codes[0] isEqualToString:emoji.emojiCode]) {
-                    weakself.imageView.image = emoji.emojiImage; //TODO
-                }
-            }
-            else {
-                weakself.imageView.image = [UIImage imageNamed:@"mm_emoji_error"];
-            }
-        }];
-    }
-    self.progressView.hidden     = self.model.message.isOutgoingMsg ? (self.model.message.deliveryState != NIMMessageDeliveryStateDelivering) : (self.model.message.attachmentDownloadState != NIMMessageAttachmentDownloadStateDownloading);
-    if (!self.progressView.hidden) {
-        [self.progressView setProgress:[[[NIMSDK sharedSDK] chatManager] messageTransportProgress:self.model.message]];
-    }
 }
 
 - (void)layoutSubviews{

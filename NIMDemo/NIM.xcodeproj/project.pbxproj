@@ -254,11 +254,11 @@
 		BDEA5AA51EEE7CF600DE78AF /* mvp.vsh.c in Sources */ = {isa = PBXBuildFile; fileRef = BDEA5A7E1EEE7CF600DE78AF /* mvp.vsh.c */; };
 		BDEA5AA81EEE7CF600DE78AF /* ijksdl_timer.c in Sources */ = {isa = PBXBuildFile; fileRef = BDEA5A8D1EEE7CF600DE78AF /* ijksdl_timer.c */; };
 		BDEA5AAA1EEE7CF600DE78AF /* IJKSDLGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = BDEA5A971EEE7CF600DE78AF /* IJKSDLGLView.m */; };
-		CCC2B2331FEB6095006749DF /* MMTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC2B1DD1FEB6095006749DF /* MMTextView.m */; };
-		CCC2B2341FEB6095006749DF /* MMTextAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC2B1DE1FEB6095006749DF /* MMTextAttachment.m */; };
-		CCC2B2351FEB6095006749DF /* MMTextParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC2B1E21FEB6095006749DF /* MMTextParser.m */; };
-		CCC2B2571FEB6095006749DF /* BQMM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC2B2311FEB6095006749DF /* BQMM.framework */; };
-		CCC2B2581FEB6095006749DF /* BQMM.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CCC2B2321FEB6095006749DF /* BQMM.bundle */; };
+		CCF6749C207B560500BBD973 /* MMTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF67493207B560300BBD973 /* MMTextView.m */; };
+		CCF6749D207B560500BBD973 /* MMTextAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF67494207B560300BBD973 /* MMTextAttachment.m */; };
+		CCF6749E207B560500BBD973 /* MMTextParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF67498207B560300BBD973 /* MMTextParser.m */; };
+		CCF6749F207B560500BBD973 /* BQMM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCF6749A207B560500BBD973 /* BQMM.framework */; };
+		CCF674A0207B560500BBD973 /* BQMM.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CCF6749B207B560500BBD973 /* BQMM.bundle */; };
 		CCFE7A121FEB8CB500D9BB0C /* NTESChatroomEmojiContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFE7A101FEB8CB500D9BB0C /* NTESChatroomEmojiContentView.m */; };
 		E4168E291B6A364800F3D35D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4168E281B6A364800F3D35D /* AudioToolbox.framework */; };
 		E4168E2B1B6A364F00F3D35D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4168E2A1B6A364F00F3D35D /* CoreMedia.framework */; };
@@ -741,14 +741,14 @@
 		BDEA5A961EEE7CF600DE78AF /* IJKSDLGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IJKSDLGLView.h; sourceTree = "<group>"; };
 		BDEA5A971EEE7CF600DE78AF /* IJKSDLGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IJKSDLGLView.m; sourceTree = "<group>"; };
 		C716F6793D5D6D1604893032 /* Pods-NIMDemo-NIM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NIMDemo-NIM.release.xcconfig"; path = "Pods/Target Support Files/Pods-NIMDemo-NIM/Pods-NIMDemo-NIM.release.xcconfig"; sourceTree = "<group>"; };
-		CCC2B1DD1FEB6095006749DF /* MMTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTextView.m; sourceTree = "<group>"; };
-		CCC2B1DE1FEB6095006749DF /* MMTextAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTextAttachment.m; sourceTree = "<group>"; };
-		CCC2B1DF1FEB6095006749DF /* MMTextParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTextParser.h; sourceTree = "<group>"; };
-		CCC2B1E01FEB6095006749DF /* MMTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTextView.h; sourceTree = "<group>"; };
-		CCC2B1E11FEB6095006749DF /* MMTextAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTextAttachment.h; sourceTree = "<group>"; };
-		CCC2B1E21FEB6095006749DF /* MMTextParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTextParser.m; sourceTree = "<group>"; };
-		CCC2B2311FEB6095006749DF /* BQMM.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BQMM.framework; sourceTree = "<group>"; };
-		CCC2B2321FEB6095006749DF /* BQMM.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BQMM.bundle; sourceTree = "<group>"; };
+		CCF67493207B560300BBD973 /* MMTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTextView.m; sourceTree = "<group>"; };
+		CCF67494207B560300BBD973 /* MMTextAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTextAttachment.m; sourceTree = "<group>"; };
+		CCF67495207B560300BBD973 /* MMTextParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTextParser.h; sourceTree = "<group>"; };
+		CCF67496207B560300BBD973 /* MMTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTextView.h; sourceTree = "<group>"; };
+		CCF67497207B560300BBD973 /* MMTextAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTextAttachment.h; sourceTree = "<group>"; };
+		CCF67498207B560300BBD973 /* MMTextParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTextParser.m; sourceTree = "<group>"; };
+		CCF6749A207B560500BBD973 /* BQMM.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BQMM.framework; sourceTree = "<group>"; };
+		CCF6749B207B560500BBD973 /* BQMM.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BQMM.bundle; sourceTree = "<group>"; };
 		CCFE7A101FEB8CB500D9BB0C /* NTESChatroomEmojiContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESChatroomEmojiContentView.m; sourceTree = "<group>"; };
 		CCFE7A111FEB8CB500D9BB0C /* NTESChatroomEmojiContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESChatroomEmojiContentView.h; sourceTree = "<group>"; };
 		E4168E281B6A364800F3D35D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -801,7 +801,7 @@
 				61E8F9121AA16E5300F51DAF /* CoreLocation.framework in Frameworks */,
 				61E8F90E1AA169F000F51DAF /* MapKit.framework in Frameworks */,
 				8368EA631F271CA300C63840 /* libWeChatSDK.a in Frameworks */,
-				CCC2B2571FEB6095006749DF /* BQMM.framework in Frameworks */,
+				CCF6749F207B560500BBD973 /* BQMM.framework in Frameworks */,
 				AEA87FE11A81CAD600ACC3BA /* AVFoundation.framework in Frameworks */,
 				834DC59B1F18BE1900C9E0B3 /* JrmfPacketKit.framework in Frameworks */,
 				61CF576F1A787DB000B43072 /* MobileCoreServices.framework in Frameworks */,
@@ -1982,30 +1982,30 @@
 		CCC2B1DB1FEB6095006749DF /* BQMM_SDK */ = {
 			isa = PBXGroup;
 			children = (
-				CCC2B1DC1FEB6095006749DF /* BQMM_EXT */,
-				CCC2B2301FEB6095006749DF /* BQMM */,
+				CCF67499207B560500BBD973 /* BQMM */,
+				CCF67492207B560300BBD973 /* BQMM_EXT */,
 			);
 			path = BQMM_SDK;
 			sourceTree = "<group>";
 		};
-		CCC2B1DC1FEB6095006749DF /* BQMM_EXT */ = {
+		CCF67492207B560300BBD973 /* BQMM_EXT */ = {
 			isa = PBXGroup;
 			children = (
-				CCC2B1DD1FEB6095006749DF /* MMTextView.m */,
-				CCC2B1DE1FEB6095006749DF /* MMTextAttachment.m */,
-				CCC2B1DF1FEB6095006749DF /* MMTextParser.h */,
-				CCC2B1E01FEB6095006749DF /* MMTextView.h */,
-				CCC2B1E11FEB6095006749DF /* MMTextAttachment.h */,
-				CCC2B1E21FEB6095006749DF /* MMTextParser.m */,
+				CCF67493207B560300BBD973 /* MMTextView.m */,
+				CCF67494207B560300BBD973 /* MMTextAttachment.m */,
+				CCF67495207B560300BBD973 /* MMTextParser.h */,
+				CCF67496207B560300BBD973 /* MMTextView.h */,
+				CCF67497207B560300BBD973 /* MMTextAttachment.h */,
+				CCF67498207B560300BBD973 /* MMTextParser.m */,
 			);
 			path = BQMM_EXT;
 			sourceTree = "<group>";
 		};
-		CCC2B2301FEB6095006749DF /* BQMM */ = {
+		CCF67499207B560500BBD973 /* BQMM */ = {
 			isa = PBXGroup;
 			children = (
-				CCC2B2311FEB6095006749DF /* BQMM.framework */,
-				CCC2B2321FEB6095006749DF /* BQMM.bundle */,
+				CCF6749A207B560500BBD973 /* BQMM.framework */,
+				CCF6749B207B560500BBD973 /* BQMM.bundle */,
 			);
 			path = BQMM;
 			sourceTree = "<group>";
@@ -2075,7 +2075,7 @@
 					AE5882E41A6F47E10070536A = {
 						CreatedOnToolsVersion = 6.1;
 						DevelopmentTeam = HY2JF7VN6E;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -2084,7 +2084,7 @@
 								enabled = 0;
 							};
 							com.apple.Push = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -2140,8 +2140,8 @@
 				61E4712B1B7D963E00F4A1BF /* NTESLoginViewController.xib in Resources */,
 				834DC5A21F1C5C6A00C9E0B3 /* AlipaySDK.bundle in Resources */,
 				AE5882F61A6F47E10070536A /* Images.xcassets in Resources */,
+				CCF674A0207B560500BBD973 /* BQMM.bundle in Resources */,
 				E48D25CB1EBB178000078BCD /* video_chat_push.mp3 in Resources */,
-				CCC2B2581FEB6095006749DF /* BQMM.bundle in Resources */,
 				61A18A4B1DC73B96001FD538 /* NIMKitEmoticon.bundle in Resources */,
 				834382791EFCB9D30052254A /* NTESCustomSysNotificationViewController.xib in Resources */,
 				E45E17821CA8CBA500C4ED69 /* NTESLogViewController.xib in Resources */,
@@ -2256,6 +2256,7 @@
 				BDEA5A9F1EEE7CF600DE78AF /* renderer_rgb.c in Sources */,
 				61E4715A1B7D963E00F4A1BF /* NTESMutiClientsHeaderView.m in Sources */,
 				6159DF5A1C45FAF500E32EB4 /* NTESChatroomTextContentView.m in Sources */,
+				CCF6749D207B560500BBD973 /* MMTextAttachment.m in Sources */,
 				61775E931C571FE500C1DA03 /* NTESLiveActionView.m in Sources */,
 				61E4713B1B7D963E00F4A1BF /* NTESSessionChartletContentView.m in Sources */,
 				619586811C19717B00858434 /* NTESChatroomListViewController.m in Sources */,
@@ -2268,7 +2269,6 @@
 				61A8EF341BB67F0900033FB8 /* UIResponder+NTESFirstResponder.m in Sources */,
 				61EEE7701C22865D00022315 /* NTESLiveInfoViewController.m in Sources */,
 				61E471521B7D963E00F4A1BF /* NTESAudioChatViewController.m in Sources */,
-				CCC2B2341FEB6095006749DF /* MMTextAttachment.m in Sources */,
 				61E4712E1B7D963E00F4A1BF /* NTESSessionConfig.m in Sources */,
 				6173AEC01BAAB91C00854D49 /* NTESNickNameSettingViewController.m in Sources */,
 				BDEA5AAA1EEE7CF600DE78AF /* IJKSDLGLView.m in Sources */,
@@ -2282,10 +2282,12 @@
 				832519211EC97B7C00CCA40A /* NTESMeetingMember.m in Sources */,
 				61E4714E1B7D963E00F4A1BF /* NTESWhiteboardDrawView.m in Sources */,
 				61DA56FF1B53E33F00828B8A /* UIImage+NTES.m in Sources */,
+				CCF6749C207B560500BBD973 /* MMTextView.m in Sources */,
 				61E4715B1B7D963E00F4A1BF /* NTESTextHeaderView.m in Sources */,
 				61E471551B7D963E00F4A1BF /* NTESVideoChatViewController.m in Sources */,
 				61E471021B7D963E00F4A1BF /* NTESJionTeamViewController.m in Sources */,
 				61518A541CA233BB0061C4A9 /* NTESDemoFetchChatroomTask.m in Sources */,
+				CCF6749E207B560500BBD973 /* MMTextParser.m in Sources */,
 				61E4718E1B7D96AA00F4A1BF /* NTESFileLocationHelper.m in Sources */,
 				61E471931B7D96AA00F4A1BF /* NTESNotificationCenter.m in Sources */,
 				834DC5D31F1CD66B00C9E0B3 /* NTESRedPacketTipAttachment.m in Sources */,
@@ -2298,7 +2300,6 @@
 				61AEC12A1BD69C6E00B00F02 /* NTESSessionCardViewController.m in Sources */,
 				832BE9B01EB85C260068D234 /* NTESTeamMeetingViewController.m in Sources */,
 				61AF8CE11C55170900BFC84F /* UIScrollView+NTESDirection.m in Sources */,
-				CCC2B2351FEB6095006749DF /* MMTextParser.m in Sources */,
 				61206EE71C1E607B009E4C78 /* NTESChatroomListCell.m in Sources */,
 				61E471191B7D963E00F4A1BF /* NTESContactUtilCell.m in Sources */,
 				61E471661B7D963E00F4A1BF /* NTESSettingPortraitCell.m in Sources */,
@@ -2341,7 +2342,6 @@
 				83802F0D1F4ADF5300CC8B59 /* NTESChatroomRobotContentConfig.m in Sources */,
 				61E471621B7D963E00F4A1BF /* NTESAboutViewController.m in Sources */,
 				834DC5D01F1C9FAB00C9E0B3 /* NTESRedPacketManager.m in Sources */,
-				CCC2B2331FEB6095006749DF /* MMTextView.m in Sources */,
 				61E471411B7D963E00F4A1BF /* NTESFilePreViewController.m in Sources */,
 				BDEA5A9A1EEE7CF600DE78AF /* rgb.fsh.c in Sources */,
 				611ABF011B3CF4FC00B8706C /* NTESBadgeView.m in Sources */,
@@ -2550,10 +2550,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
-				CODE_SIGN_ENTITLEMENTS = "NIMDemo/Supporting Files/NIMDev.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = HY2JF7VN6E;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2588,8 +2587,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.siyanhui.NIM;
 				PRODUCT_NAME = NIM;
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "db95d349-73c3-40c4-bbf3-dec6532f7af9";
+				PROVISIONING_PROFILE_SPECIFIER = "isan's XC WILD";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
@@ -2603,11 +2602,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
-				CODE_SIGN_ENTITLEMENTS = "NIMDemo/Supporting Files/NIMPro.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Cooperation Communication Operating and Support Center China Telecom";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "$(XCCONFIG_CODE_SIGNING)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = HY2JF7VN6E;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2647,8 +2645,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.siyanhui.NIM;
 				PRODUCT_NAME = NIM;
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "db95d349-73c3-40c4-bbf3-dec6532f7af9";
+				PROVISIONING_PROFILE_SPECIFIER = "isan's XC WILD";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
 			};

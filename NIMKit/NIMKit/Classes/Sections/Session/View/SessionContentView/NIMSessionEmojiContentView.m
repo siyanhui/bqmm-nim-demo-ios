@@ -17,7 +17,7 @@
 
 @interface NIMSessionEmojiContentView()
 
-@property (nonatomic,strong,readwrite) UIImageView * imageView;
+@property (nonatomic,strong,readwrite) MMImageView * imageView;
 
 @property (nonatomic,strong) NIMLoadProgressView * progressView;
 
@@ -29,7 +29,7 @@
     self = [super initSessionMessageContentView];
     if (self) {
         self.opaque = YES;
-        _imageView  = [[UIImageView alloc] initWithFrame:CGRectZero];
+        _imageView  = [[MMImageView alloc] initWithFrame:CGRectZero];
         _imageView.backgroundColor = [UIColor clearColor];
         [self addSubview:_imageView];
         _progressView = [[NIMLoadProgressView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
@@ -47,49 +47,29 @@
     self.imageView.image = [UIImage imageNamed:@"mm_emoji_loading"];
     NSDictionary *ext = data.message.remoteExt;
     if ([ext[TEXT_MESG_TYPE] isEqualToString:TEXT_MESG_FACE_TYPE]) {
-    
-        NSArray *codes = nil;
-        if (ext[@"msg_data"]) {
-            codes = @[ext[@"msg_data"][0][0]];
+        NSString *emojiCode = nil;
+        if (ext[TEXT_MESG_DATA]) {
+            emojiCode = ext[TEXT_MESG_DATA][0][0];
         }
-        __weak typeof(self) weakself = self;
-        [[MMEmotionCentre defaultCentre] fetchEmojisByType:MMFetchTypeBig codes:codes completionHandler:^(NSArray *emojis) {
-            if (emojis.count > 0) {
-                MMEmoji *emoji = emojis[0];
-                if ([codes[0] isEqualToString:emoji.emojiCode]) {
-                    weakself.imageView.image = emoji.emojiImage; //TODO
-                }
-            }
-            else {
-                weakself.imageView.image = [UIImage imageNamed:@"mm_emoji_error"];
-            }
-        }];
+        if (emojiCode != nil && emojiCode.length > 0) {
+            self.imageView.errorImage = [UIImage imageNamed:@"mm_emoji_error"];
+            self.imageView.image = [UIImage imageNamed:@"mm_emoji_loading"];
+            [self.imageView setImageWithEmojiCode:emojiCode];
+        }else {
+            self.imageView.image = [UIImage imageNamed:@"mm_emoji_error"];
+        }
         //BQMM集成
     }else if([ext[TEXT_MESG_TYPE] isEqualToString:TEXT_MESG_WEB_TYPE]) {
         self.imageView.image = [UIImage imageNamed:@"mm_emoji_loading"];
+        self.imageView.errorImage = [UIImage imageNamed:@"mm_emoji_error"];
+        
         NSDictionary *msgData = ext[TEXT_MESG_DATA];
         NSString *webStickerUrl = msgData[WEBSTICKER_URL];
-        NSURL *url = [[NSURL alloc] initWithString:webStickerUrl];
-        if (url != nil) {
-            __weak typeof(self) weakSelf = self;
-            [self.imageView sd_setImageWithURL:url placeholderImage:nil options:SDWebImageAvoidAutoSetImage completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-                if(error == nil && image) {
-                    if (image.images.count > 1) {
-                        weakSelf.imageView.animationImages = image.images;
-                        weakSelf.imageView.image = image.images[0];
-                        weakSelf.imageView.animationDuration = image.duration;
-                        [weakSelf.imageView startAnimating];
-                    }else{
-                        weakSelf.imageView.image = image;
-                    }
-                }else{
-                    weakSelf.imageView.image = [UIImage imageNamed:@"mm_emoji_error"];
-                }
-            }];
-            
-        }else{
-            self.imageView.image = [UIImage imageNamed:@"mm_emoji_error"];
-        }
+        NSString *webStickerId = msgData[WEBSTICKER_ID];
+        float height = [msgData[WEBSTICKER_HEIGHT] floatValue];
+        float width = [msgData[WEBSTICKER_WIDTH] floatValue];
+        
+        [self.imageView setImageWithUrl:webStickerUrl gifId:webStickerId];
     }
     
     self.progressView.hidden     = self.model.message.isOutgoingMsg ? (self.model.message.deliveryState != NIMMessageDeliveryStateDelivering) : (self.model.message.attachmentDownloadState != NIMMessageAttachmentDownloadStateDownloading);
@@ -109,7 +89,7 @@
     _progressView.frame   = self.bounds;
     
     CALayer *maskLayer = [CALayer layer];
-    maskLayer.cornerRadius = 13.0;
+//    maskLayer.cornerRadius = 13.0;
     maskLayer.backgroundColor = [UIColor blackColor].CGColor;
     maskLayer.frame = self.imageView.bounds;
     self.imageView.layer.mask = maskLayer;

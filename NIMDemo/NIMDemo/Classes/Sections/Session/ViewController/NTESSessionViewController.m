@@ -448,18 +448,16 @@ NIMEventSubscribeManagerDelegate>
         NSDictionary *actions = [self cellActions];
         NSString *value = actions[@(message.messageType)];
         if (value) {
-            //BQMM集成
             if ([value isEqualToString:@"textContentAction"]) {
-                NSDictionary *extDic = message.remoteExt;
-                if (extDic != nil && [extDic[@"txt_msgType"] isEqualToString: @"facetype"]) {
-                    SEL selector = NSSelectorFromString(@"showEmojiDetail:");
-                    if (selector && [self respondsToSelector:selector]) {
-                        SuppressPerformSelectorLeakWarning([self performSelector:selector withObject:message]);
-                        handled = YES;
-                    }
-                }else{
-                    handled = YES;
-                }
+//                NSDictionary *extDic = message.remoteExt;
+//                if (extDic != nil && [extDic[@"txt_msgType"] isEqualToString: @"facetype"]) {
+//                    handled = YES;
+//                }else if(extDic != nil && [extDic[@"txt_msgType"] isEqualToString: @"webtype"]) {
+//                    handled = YES;
+//                }else{
+//                    handled = YES;
+//                }
+                handled = YES;
             }else{
                 SEL selector = NSSelectorFromString(value);
                 if (selector && [self respondsToSelector:selector]) {
@@ -576,13 +574,13 @@ NIMEventSubscribeManagerDelegate>
 
 
 #pragma mark - Cell Actions
-//BQMM集成
+
 - (void)showEmojiDetail:(NIMMessage *)message {
-    NSDictionary *extDic = message.remoteExt;
-    if (extDic != nil && [extDic[@"txt_msgType"] isEqualToString: @"facetype"]) {
-        UIViewController *emojiController = [[MMEmotionCentre defaultCentre] controllerForEmotionCode:extDic[@"msg_data"][0][0]];
-        [self.navigationController pushViewController:emojiController animated:YES];
-    }
+    return;
+}
+
+- (void)showWebGif:(NIMMessage *)message {
+    return;
 }
 
 
@@ -910,7 +908,6 @@ NIMEventSubscribeManagerDelegate>
     static NSDictionary *actions = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        //BQMM集成
         actions = @{@(NIMMessageTypeText) :     @"textContentAction",
                     @(NIMMessageTypeImage) :    @"showImage:",
                     @(NIMMessageTypeVideo) :    @"showVideo:",

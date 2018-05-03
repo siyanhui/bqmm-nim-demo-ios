@@ -78,8 +78,8 @@
     [self uiCheckReceipt];
     
     //BQMM集成   设置gif搜索相关
-//    [[MMGifManager defaultManager] setSearchModeEnabled:true withInputView:_sessionInputView.toolBar.inputTextView.textView];
-//    [[MMGifManager defaultManager] setSearchUiVisible:true withAttatchedView:_sessionInputView.toolBar];
+    [[MMGifManager defaultManager] setSearchModeEnabled:true withInputView:_sessionInputView.toolBar.inputTextView.textView];
+    [[MMGifManager defaultManager] setSearchUiVisible:true withAttatchedView:_sessionInputView.toolBar];
     __weak NIMSessionViewController* weakSelf = self;
     [MMGifManager defaultManager].selectedHandler = ^(MMGif * _Nullable gif) {
         __strong NIMSessionViewController *tempSelf = weakSelf;
@@ -832,6 +832,8 @@
 
 //BQMM集成
 //#pragma mark - MMEmotionCentreDelegate
+
+//点击表情键盘上的gif tab
 - (void)didClickGifTab {
     //点击gif tab 后应该保证搜索模式是打开的 搜索UI是允许显示的
     [[MMGifManager defaultManager] setSearchModeEnabled:true withInputView:_sessionInputView.toolBar.inputTextView.textView];
@@ -841,17 +843,20 @@
     [_sessionInputView refreshStatus:NIMInputStatusText];
 }
 
+//点击键盘中大表情的代理
 - (void)didSelectEmoji:(MMEmoji *)emoji
 {
     [self sendMMFace:emoji];
 }
 
+//点击联想表情的代理 （`deprecated`）
 - (void)didSelectTipEmoji:(MMEmoji *)emoji
 {
     [self sendMMFace:emoji];
     _sessionInputView.toolBar.inputTextView.text = @"";
 }
 
+//点击小表情键盘上发送按钮的代理
 - (void)didSendWithInput:(UIResponder<UITextInput> *)input
 {
     UITextView *textView = (UITextView *)input;
@@ -863,12 +868,14 @@
     [_sessionInputView.toolBar layoutIfNeeded];
 }
 
+//点击输入框切换表情按钮状态
 - (void)tapOverlay
 {
     [_sessionInputView refreshStatus:NIMInputStatusText];
 }
 
 #pragma mark private
+//BQMM集成
 -(void)sendMMFace:(MMEmoji *)emoji {
     NSDictionary *mmExt = @{@"txt_msgType":@"facetype",
                             @"msg_data":@[@[emoji.emojiCode, [NSString stringWithFormat:@"%d", emoji.isEmoji ? 1 : 2]]]};
@@ -889,9 +896,6 @@
     message.remoteExt = extDic;
     
     [self sendMessage:message];
-
-    
-    
 }
 @end
 

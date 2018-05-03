@@ -276,7 +276,6 @@
 {
     if (_inputDelegate && [_inputDelegate respondsToSelector:@selector(didChangeInputHeight:)])
     {
-        //BQMM集成
         if (self.status == NIMInputStatusMore || self.status == NIMInputStatusAudio)
         {
             //这个时候需要一个动画来模拟键盘
@@ -363,6 +362,7 @@
 - (void)onTouchEmoticonBtn:(id)sender
 {
     if (self.status != NIMInputStatusEmoticon) {
+        //切换成表情键盘
         [[MMEmotionCentre defaultCentre] attachEmotionKeyboardToInput:self.toolBar.inputTextView.textView];
         if (!self.toolBar.showsKeyboard)
         {
@@ -374,6 +374,7 @@
     }
     else
     {
+        //切换成系统键盘
         [[MMEmotionCentre defaultCentre] switchToDefaultKeyboard];
         [self refreshStatus:NIMInputStatusText];
         self.toolBar.showsKeyboard = YES;

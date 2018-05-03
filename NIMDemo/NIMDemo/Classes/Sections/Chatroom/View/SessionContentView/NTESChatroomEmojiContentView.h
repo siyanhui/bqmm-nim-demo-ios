@@ -7,9 +7,10 @@
 //
 
 #import "NIMSessionMessageContentView.h"
-
+#import <BQMM/BQMM.h>
 @interface NTESChatroomEmojiContentView : NIMSessionMessageContentView
 
-@property (nonatomic,strong,readonly) UIImageView * imageView;
+//BQMM集成
+@property (nonatomic,strong,readonly) MMImageView * imageView;
 
 @end
